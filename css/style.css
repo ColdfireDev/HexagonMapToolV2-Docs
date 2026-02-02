@@ -59,7 +59,7 @@ header {
     flex-wrap: wrap;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary, .btn-secondary, .btn-asset-store {
     padding: 0.8rem 2rem;
     font-size: 1.1rem;
     border-radius: 8px;
@@ -89,6 +89,18 @@ header {
 .btn-secondary:hover {
     background: #7ecfff;
     color: #23272b;
+}
+
+.btn-asset-store {
+    background: linear-gradient(90deg, #ff8c42, #ffb366);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(255, 140, 66, 0.4);
+}
+
+.btn-asset-store:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 140, 66, 0.6);
+    background: linear-gradient(90deg, #ff9d5c, #ffc280);
 }
 
 /* Language Selector */
