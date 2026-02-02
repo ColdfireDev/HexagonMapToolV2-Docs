@@ -55,6 +55,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 footer_credits_studio: "Estudio:",
                 footer_credits_note: "Desarrollado con ❤️ para la comunidad de Unity",
                 footer_copyright: "Hexagon Map Tool V2 © 2026 | Documentación y recursos por ColdfireDv. Todos los derechos reservados.",
+                // PDF Export Instructions
+                pdf_inst_title: "📄 Instrucciones para exportar a PDF",
+                pdf_inst_step1: "Selecciona tu idioma preferido usando los botones arriba",
+                pdf_inst_step2: "Presiona",
+                pdf_inst_step2_win: "(Windows/Linux) o",
+                pdf_inst_step2_mac: "(Mac)",
+                pdf_inst_step3: "Selecciona \"Guardar como PDF\" o \"Microsoft Print to PDF\"",
+                pdf_inst_step4: "Haz clic en \"Guardar\"",
+                pdf_inst_note: "El selector de idioma se ocultará automáticamente al imprimir",
                 // FAQ - continuación
                 faq_q3: "¿Qué hago si el pincel detecta ocupación incorrecta (vacío detectado como ocupado o viceversa)?",
                 faq_q3_causes: "Causas comunes y soluciones:",
@@ -908,6 +917,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 footer_credits_studio: "Studio:",
                 footer_credits_note: "Developed with ❤️ for the Unity community",
                 footer_copyright: "Hexagon Map Tool V2 © 2026 | Documentation and resources by ColdfireDv. All rights reserved.",
+                // PDF Export Instructions
+                pdf_inst_title: "📄 Instructions to export to PDF",
+                pdf_inst_step1: "Select your preferred language using the buttons above",
+                pdf_inst_step2: "Press",
+                pdf_inst_step2_win: "(Windows/Linux) or",
+                pdf_inst_step2_mac: "(Mac)",
+                pdf_inst_step3: "Select \"Save as PDF\" or \"Microsoft Print to PDF\"",
+                pdf_inst_step4: "Click \"Save\"",
+                pdf_inst_note: "The language selector will be automatically hidden when printing",
                 // FAQ - continuation
                 faq_q3: "What do I do if the brush detects incorrect occupation (empty detected as occupied or vice versa)?",
                 faq_q3_causes: "Common causes and solutions:",
@@ -1747,6 +1765,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 footer_credits_studio: "スタジオ:",
                 footer_credits_note: "Unityコミュニティのために❤️で開発されました",
                 footer_copyright: "Hexagon Map Tool V2 © 2026 | ドキュメントとリソース: ColdfireDv。全著作権所有。",
+                // PDF Export Instructions
+                pdf_inst_title: "📄 PDFにエクスポートする手順",
+                pdf_inst_step1: "上のボタンで優先言語を選択してください",
+                pdf_inst_step2: "押す",
+                pdf_inst_step2_win: "（Windows/Linux）または",
+                pdf_inst_step2_mac: "（Mac）",
+                pdf_inst_step3: "「PDFとして保存」または「Microsoft Print to PDF」を選択",
+                pdf_inst_step4: "「保存」をクリック",
+                pdf_inst_note: "印刷時には言語セレクターが自動的に非表示になります",
                 // FAQ - continuación
                 faq_q3: "ブラシが誤った占有状態を検出した場合（空なのに占有、またはその逆）どうすればいいですか？",
                 faq_q3_causes: "主な原因と解決方法:",

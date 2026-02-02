@@ -1,0 +1,340 @@
+/* PDF Export Optimized Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: white;
+    color: #1a1a1a;
+    line-height: 1.6;
+    font-size: 11pt;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 10mm;
+}
+
+/* Hide interactive elements */
+.sidebar,
+.toggle-sidebar,
+.hero-buttons {
+    display: none !important;
+}
+
+/* Language Selector - visible on screen, hidden when printing */
+.language-selector {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f0f7ff;
+    border-radius: 8px;
+}
+
+.lang-btn {
+    padding: 0.6rem 1.2rem;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lang-btn:hover {
+    background: #f8f9fa;
+    border-color: #3a8dde;
+    transform: translateY(-2px);
+}
+
+.lang-btn.active {
+    background: #3a8dde;
+    color: white;
+    border-color: #3a8dde;
+    box-shadow: 0 2px 8px rgba(58, 141, 222, 0.3);
+}
+
+.lang-btn .flag {
+    font-size: 1.3rem;
+}
+
+.lang-btn .lang-text {
+    font-size: 0.95rem;
+}
+
+/* AI Translation Notice */
+#ai-translation-notice {
+    margin: 1rem auto;
+    padding: 0.8rem 1rem;
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    border-radius: 4px;
+    max-width: 700px;
+}
+
+/* PDF Instructions */
+.pdf-instructions {
+    background: linear-gradient(135deg, #e3f2fd 0%, #fff9e6 100%);
+    border: 2px dashed #3a8dde;
+    padding: 1.5rem;
+    margin: 2rem auto;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 700px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.pdf-instructions h3 {
+    color: #2c5aa0;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.pdf-instructions p {
+    color: #555;
+    margin-bottom: 0.4rem;
+    line-height: 1.8;
+}
+
+.pdf-instructions strong {
+    color: #3a8dde;
+    font-weight: 700;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #3a8dde;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #3a8dde;
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Main Content */
+.container {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+}
+
+.content {
+    margin-left: 0 !important;
+    width: 100%;
+}
+
+/* Sections */
+.section-card {
+    margin-bottom: 2rem;
+    page-break-inside: avoid;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: #3a8dde;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+.section-intro {
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+/* Accordions - Always Expanded */
+.accordion-item {
+    margin-bottom: 1.5rem;
+    page-break-inside: avoid;
+}
+
+.accordion-header {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 0;
+    border: none;
+    background: #f5f5f5;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    cursor: default;
+    border-left: 4px solid #3a8dde;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.accordion-icon {
+    display: none;
+}
+
+.accordion-content {
+    display: block !important;
+    max-height: none !important;
+    padding: 1rem;
+    background: white;
+    border-left: 2px solid #e0e0e0;
+    margin-left: 0.5rem;
+}
+
+/* Tabs - All Visible */
+.tabs {
+    width: 100%;
+}
+
+.tab-content {
+    display: block !important;
+    padding: 1rem 0;
+    page-break-before: always;
+}
+
+.tab-content:first-of-type {
+    page-break-before: auto;
+}
+
+/* Tips and Warnings */
+.quick-start-tips {
+    padding: 1rem;
+    margin: 1rem 0;
+    background: #f0f8ff;
+    border-left: 4px solid #3a8dde;
+    page-break-inside: avoid;
+}
+
+/* Code blocks */
+code {
+    background: #f5f5f5;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    color: #c7254e;
+    font-size: 0.9em;
+}
+
+/* Lists */
+ul, ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    page-break-inside: avoid;
+}
+
+table th,
+table td {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background: #f5f5f5;
+    font-weight: 600;
+}
+
+/* Strong text */
+strong {
+    color: #333;
+}
+
+/* Links */
+a {
+    color: #3a8dde;
+    text-decoration: none;
+}
+
+/* Footer */
+footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Page breaks */
+h2, h3, h4, h5 {
+    page-break-after: avoid;
+}
+
+h2 {
+    font-size: 1.4rem;
+    color: #3a8dde;
+    margin: 1.5rem 0 1rem 0;
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 1.2rem 0 0.8rem 0;
+}
+
+h4, h5 {
+    font-size: 1rem;
+    color: #666;
+    margin: 1rem 0 0.5rem 0;
+}
+
+/* Print-specific rules */
+@media print {
+    body {
+        font-size: 10pt;
+    }
+    
+    /* Hide interactive elements when printing */
+    .language-selector,
+    .pdf-instructions,
+    #ai-translation-notice {
+        display: none !important;
+    }
+    
+    .section-card {
+        page-break-inside: avoid;
+    }
+    
+    .accordion-item {
+        page-break-inside: avoid;
+    }
+    
+    a[href]:after {
+        content: none !important;
+    }
+    
+    /* Show all tab content */
+    .tab-content {
+        display: block !important;
+    }
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    page-break-inside: avoid;
+}
