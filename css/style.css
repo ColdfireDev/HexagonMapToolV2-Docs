@@ -93,14 +93,26 @@ header {
 
 .btn-asset-store {
     background: linear-gradient(90deg, #ff8c42, #ffb366);
-    color: #fff;
+    color: #fff !important;
     box-shadow: 0 4px 12px rgba(255, 140, 66, 0.4);
+    text-decoration: none !important;
+    border: none;
 }
 
 .btn-asset-store:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(255, 140, 66, 0.6);
     background: linear-gradient(90deg, #ff9d5c, #ffc280);
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+.btn-asset-store:visited,
+.btn-asset-store:link,
+.btn-asset-store:active,
+.btn-asset-store:focus {
+    color: #fff !important;
+    text-decoration: none !important;
 }
 
 /* Language Selector */
