@@ -4,590 +4,1477 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentación | Hexagon Map Tool V2</title>
-    <link rel="icon" type="image/png" href="img/ICON.png">
+    <title>Hexagon Map Tool V2 - Documentación</title>
+    <link rel="icon" type="image/png" href="img/HexIcon.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <header>
-        <h1>Hexagon Map Tool V2</h1>
-        <h2>Documentación de la herramienta</h2>
+    <!-- Header Hero -->
+    <header id="hero">
+        <div class="hero-content">
+            <h1>🛠️ Hexagon Map Tool V2</h1>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">Herramienta profesional para crear mapas hexagonales 3D en Unity</p>
+            <div class="hero-buttons">
+                <a href="#quick-start" class="btn-primary" data-i18n="btn_start">Comenzar</a>
+                <a href="#interface" class="btn-secondary" data-i18n="btn_interface">Ver Interfaz</a>
+            </div>
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="es" title="Español">
+                    <span class="flag">🇪🇸</span>
+                    <span class="lang-text">ES</span>
+                </button>
+                <button class="lang-btn" data-lang="en" title="English">
+                    <span class="flag">🇬🇧</span>
+                    <span class="lang-text">EN</span>
+                </button>
+                <button class="lang-btn" data-lang="ja" title="日本語">
+                    <span class="flag">🇯🇵</span>
+                    <span class="lang-text">JP</span>
+                </button>
+            </div>
+        </div>
     </header>
+
+    <!-- Toggle Sidebar Button -->
+    <button class="toggle-sidebar" aria-label="Toggle sidebar" title="Toggle sidebar">☰</button>
+
     <div class="container">
-        <button id="toggleSidebar" aria-label="Mostrar/Ocultar menú" class="toggle-sidebar">☰</button>
-        <nav class="sidebar hidden" id="sidebar">
-            <div class="sidebar-title">Contenido</div>
-            <ul>
-                <li><a href="#introduccion">1. Introducción</a></li>
-                <li><a href="#interfaz-herramienta">2. Interfaz de la herramienta</a></li>
-                <li><a href="#guia-rapida">3. Explorando los recursos de ejemplo</a></li>
-                <li><a href="#configuracion-escena">4. Configuración de escena</a></li>
-                <li><a href="#integracion-modelos-3d">5. Integración de modelos 3D</a></li>
-                <li>
-                    <a href="#referencia-componentes">5. Referencia de componentes</a>
-                    <ul style="margin-left:1.2em; font-size:0.93em; margin-top:0.2em;">
-                        <li style="margin-bottom:0.1em;"><a href="#hexagon-object"
-                                style="color:#b0b4b9; font-weight:400;">HEXAGON OBJECT</a></li>
-                        <li style="margin-bottom:0.1em;"><a href="#hexagon-grid"
-                                style="color:#b0b4b9; font-weight:400;">HEXAGON GRID</a></li>
-                        <li><a href="#hexagon-tile-layer" style="color:#b0b4b9; font-weight:400;">HEXAGON TILE LAYER</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="#opciones-avanzadas">6. Opciones avanzadas</a></li>
-                <li><a href="#personalizacion-entorno">7. Personalización de entorno</a></li>
-                <li><a href="#problemas">8. Solución de problemas</a></li>
-                <li><a href="#creditos">9. Créditos y contacto</a></li>
-            </ul>
-        </nav>
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar hidden">
+            <!--<img src="img/HexLogo.png" alt="Hexagon Map Tool Logo" class="sidebar-logo"> -->
+            <h3 class="sidebar-title" data-i18n="sidebar_nav">Navegación</h3>
+            <nav>
+                <ul>
+                    <li><a href="#hero" data-i18n="sidebar_home">Inicio</a></li>
+                    <li><a href="#quick-start" data-i18n="sidebar_quick">Inicio Rápido</a></li>
+                    <li><a href="#interface" data-i18n="sidebar_interface">Interfaz</a></li>
+                    <li><a href="#components" data-i18n="sidebar_components">Componentes</a></li>
+                    <li><a href="#faq" data-i18n="sidebar_faq">Preguntas Frecuentes</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
         <main class="content">
-            <section id="introduccion">
-                <h3>1. Introducción</h3>
-                <img src="img/IntroSample.jpg" alt="Ejemplo de mapa hexagonal en Unity">
-                <p>Hexagon Map Tool V2 es una herramienta avanzada para Unity diseñada para facilitar la creación,
-                    edición y gestión de mapas hexagonales en 3D. Su propósito es agilizar el proceso de diseño de
-                    niveles, permitiendo a los desarrolladores construir mapas complejos de manera intuitiva y
-                    eficiente, gracias a un sistema de grillas flexible, pinceles personalizables y múltiples opciones
-                    de organización y visualización.</p>
-            </section>
-            <section id="guia-rapida">
-                <h3>2. Explorando los recursos de ejemplo</h3>
-                <ol>
-                    <li>Añade el paquete Hexagon Map Tools V2 desde el "Package Manager" de Unity.</li>
-                    <li>Abre la carpeta <strong>Example</strong> incluida en el proyecto y carga la escena de
-                        ejemplo.<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin: 1.2em 0 1.2em 0;">
-                            <img src="img/A_2_1.jpg" alt="Abrir carpeta Example"
-                                style="max-width: 340px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                            <img src="img/A_2_2.jpg" alt="Cargar escena de ejemplo"
-                                style="max-width: 340px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; margin: 0.5em 0 1.2em 0;">
-                            <img src="img/A_2_3.jpg" alt="Escena de ejemplo abierta"
-                                style="max-width: 700px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                    <li>Abre la herramienta desde la barra de herramientas de Unity: <strong>Tools &gt; Hexagon Map Tool
-                            V2 &gt; Editor</strong>.<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; margin: 0.8em 0 1.2em 0; flex-direction: column; gap: 1.2em;">
-                            <img src="img/A_3_1.jpg"
-                                alt="Acceso a la herramienta desde la barra de herramientas de Unity"
-                                style="max-width: 520px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                            <img src="img/A_3_2.jpg" alt="Herramienta abierta en Unity"
-                                style="max-width: 700px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                    <li>Selecciona un grid disponible para habilitar el uso de la herramienta. Luego, selecciona la
-                        paleta “Example Palette” en el menú desplegable de paletas.<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; margin: 0.8em 0 1.2em 0;">
-                            <img src="img/A_4_1.jpg" alt="Seleccionar Example Palette en el menú desplegable de paletas"
-                                style="max-width: 420px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                    <li>Elige un pincel de la paleta.<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; margin: 0.8em 0 1.2em 0;">
-                            <img src="img/A_5_1.jpg" alt="Elegir pincel de la paleta"
-                                style="max-width: 420px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                    <li>Haz clic en el grid de la escena para empezar a dibujar con el pincel seleccionado.<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; margin: 0.8em 0 1.2em 0;">
-                            <img src="img/A_6_1.jpg" alt="Dibujar en el grid de la escena"
-                                style="max-width: 420px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                </ol>
-                <p>¡Listo! Ya puedes comenzar a crear y editar mapas hexagonales en tu proyecto.</p>
-            </section>
 
-            <section id="configuracion-escena">
-                <h3>3. Configuración de escena</h3>
-                <ol>
-                    <li>Abre la escena de Unity donde deseas trabajar.</li>
-                    <li>Desde la herramienta Hexagon Map Tool V2, haz clic en el botón "+" para añadir una nueva
-                        capa.<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; margin: 0.8em 0 1.2em 0;">
-                            <img src="img/B_2_1.jpg" alt="Añadir nueva capa"
-                                style="max-width: 420px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                    <li>Ingresa el nombre de la nueva capa.<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; margin: 0.8em 0 1.2em 0;">
-                            <img src="img/B_3_1.jpg" alt="Ingresar nombre de la nueva capa"
-                                style="max-width: 420px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                    <li>Se creará automáticamente una capa y un grid hexagonal.<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; margin: 0.8em 0 1.2em 0;">
-                            <img src="img/B_4_1.jpg" alt="Capa y grid hexagonal creados"
-                                style="max-width: 420px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                    <li>Puedes personalizar la geometría del grid, la separación entre celdas, la rotación y otros
-                        parámetros desde su componente.<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; margin: 0.8em 0 1.2em 0;">
-                            <img src="img/B_5_1.jpg" alt="Personalizar parámetros del grid"
-                                style="max-width: 700px; width: 100%; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                </ol>
-            </section>
+            <!-- Quick Start Section -->
+            <section id="quick-start" class="section-card">
+                <h2 class="section-title">⚡ Inicio Rápido</h2>
+                <p class="section-intro">Configura tu primer mapa hexagonal en minutos siguiendo estos pasos.</p>
 
-            <section id="integracion-modelos-3d">
-                <h3>4. Integración de modelos 3D</h3>
-                <ol>
-                    <li>Importa tus modelos 3D a Unity. Asegúrate de que tus modelos se vean bien en la rotación en (0,
-                        0, 0), ya que esta orientación se usará como base.<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; margin: 0.8em 0 1.2em 0;">
-                            <img src="img/C_1_1.jpg" alt="Importar modelos 3D a Unity"
-                                style="max-width: 520px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                    <li>
-                        Añade el componente <strong>Hexagon Object</strong> a tu modelo. El offset del pivote se
-                        ajustará automáticamente, pero puedes modificarlo si lo necesitas. Si no existe un grid, se
-                        creará uno nuevo usando las dimensiones del objeto como referencia. Si ya hay un grid, la
-                        herramienta ajustará automáticamente la altura ocupada por el objeto.<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; margin: 0.8em 0 1.2em 0;">
-                            <img src="img/C_2_1.jpg" alt="Añadir componente Hexagon Object"
-                                style="max-width: 340px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                    <li>Configura las propiedades del objeto, como la cantidad de celdas que ocupa, si otros objetos
-                        pueden ocupar el mismo espacio, si se comporta como prop o requiere de un suelo para acomodarse.
-                        Si este objeto es una instancia de un prefab, estos cambios afectarán a todas las
-                        instancias.<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; margin: 0.8em 0 1.2em 0;">
-                            <img src="img/C_3_1.jpg" alt="Configurar propiedades del objeto"
-                                style="max-width: 340px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                    <li>Convierte el objeto en un prefab.<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; margin: 0.8em 0 1.2em 0;">
-                            <img src="img/C_4_1.jpg" alt="Convertir objeto en prefab"
-                                style="max-width: 340px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                    <li>Crea una nueva paleta con el botón "+" y dale un nombre.<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; gap: 1.2em; margin: 0.8em 0 1.2em 0;">
-                            <img src="img/C_5_1.jpg" alt="Crear nueva paleta 1"
-                                style="max-width: 340px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                            <img src="img/C_5_2.jpg" alt="Crear nueva paleta 2"
-                                style="max-width: 340px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                    <li>Arrastra el prefab al botón "+" de color verde en la herramienta, o haz clic en ese botón para
-                        crear un nuevo pincel. Tu pincel puede contener varios prefabs para crear patrones específicos o
-                        aleatorios.<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; gap: 1.2em; margin: 0.8em 0 1.2em 0;">
-                            <img src="img/C_6_1.jpg" alt="Arrastrar prefab 1"
-                                style="max-width: 340px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                            <img src="img/C_6_2.jpg" alt="Arrastrar prefab 2"
-                                style="max-width: 340px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                    <li>¡Ya puedes hacer uso de tus propios pinceles!<br>
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; margin: 0.8em 0 1.2em 0;">
-                            <img src="img/C_7_1.jpg" alt="Uso de pinceles personalizados"
-                                style="max-width: 420px; border-radius: 12px; border: 2px solid #23272b; box-shadow: 0 2px 12px rgba(0,0,0,0.18); margin: 0;">
-                        </div>
-                    </li>
-                </ol>
-            </section>
-
-            <section id="referencia-componentes">
-                <h3>5. Referencia de componentes</h3>
-                <h4 id="hexagon-object">HEXAGON OBJECT</h4>
-                <div style="display:flex; justify-content:center; align-items:center; margin:0.7em 0 1.2em 0;">
-                    <img src="img/HexagonObject.jpg" alt="HEXAGON OBJECT"
-                        style="max-width:340px; border-radius:12px; border:2px solid #23272b; box-shadow:0 2px 12px rgba(0,0,0,0.18);">
-                </div>
-                <ul style="margin-bottom:1.2em;">
-                    <li><b>Parent Layer Reference</b> (Capa de tiles donde se registra este objeto)<br>
-                        Referencia a la capa (<i>HexagonTileLayer</i>) en la que este objeto está registrado dentro del
-                        grid hexagonal. Determina a qué conjunto de celdas pertenece el objeto y permite organizar
-                        diferentes tipos de elementos en capas separadas (por ejemplo, terreno, decoraciones,
-                        obstáculos).
-                    </li>
-                    <li><b>Cell Coordinate</b> (Coordenada de celda que ocupa este objeto)<br>
-                        Indica la posición exacta de la celda hexagonal que ocupa el objeto dentro de la capa asignada.
-                        Esta coordenada se utiliza para ubicar y alinear el objeto correctamente en el grid, y es
-                        fundamental para las operaciones de pintado, borrado y validación.
-                    </li>
-                </ul>
-                <div style="margin:0.7em 0 0.7em 0; color:#ffe082; font-weight:600;">Lo siguiente afecta al prefab y
-                    todas sus instancias:</div>
-                <ul style="margin-bottom:2em;">
-                    <li><b>Pivot Offset</b> (Offset del pivote del objeto)<br>
-                        Permite ajustar manualmente el punto de apoyo (pivot) del objeto respecto a la celda. Es útil
-                        cuando el modelo 3D tiene el pivote en una posición diferente al centro o la base, asegurando
-                        que el objeto se alinee correctamente con el grid y otras celdas.
-                    </li>
-                    <li><b>Height Cells</b> (Altura que ocupa este objeto en celdas hexagonales)<br>
-                        Define cuántas celdas de altura ocupa el objeto en el grid. Es especialmente útil para objetos
-                        altos, como edificios o columnas, que deben ocupar más de una celda verticalmente. El valor
-                        mínimo es 1.
-                    </li>
-                    <li><b>Is Stackable</b> (¿Permite que otros objetos se apilen encima?)<br>
-                        Indica si este objeto puede servir de base para que otros objetos se coloquen encima de él.
-                        Actívalo para permitir la construcción de estructuras apiladas o multicapas.
-                    </li>
-                    <li><b>Is Hexagon Prop</b> (¿Es un prop decorativo?)<br>
-                        Marca el objeto como un elemento decorativo (prop), como árboles, rocas o detalles visuales. Los
-                        props suelen ser ignorados por las herramientas de pintado masivo, excepto cuando se utiliza el
-                        borrador, facilitando la gestión de decoraciones sin afectar la jugabilidad.
-                    </li>
-                    <li><b>Requires Floor</b> (¿Requiere un objeto sólido debajo para ser colocado?)<br>
-                        Determina si el objeto necesita estar apoyado sobre una celda sólida (por ejemplo, terreno) para
-                        poder colocarse, excepto cuando está a nivel del suelo. Si está desactivado, el objeto puede
-                        colocarse en el aire.
-                    </li>
-                </ul>
-
-                <h4 id="hexagon-grid">HEXAGON GRID</h4>
-                <div style="display:flex; justify-content:center; align-items:center; margin:0.7em 0 1.2em 0;">
-                    <img src="img/HexagonGrid3D.jpg" alt="HEXAGON GRID"
-                        style="max-width:340px; border-radius:12px; border:2px solid #23272b; box-shadow:0 2px 12px rgba(0,0,0,0.18);">
-                </div>
-                <ul style="margin-bottom:1.2em;">
-                    <li><b>Grid Geometry</b> (Geometría de la celda hexagonal)<br>
-                        Define la forma y dimensiones básicas de cada celda hexagonal. Incluye el radio (distancia del
-                        centro a un vértice), el apotema (distancia del centro al centro de un lado), la altura del
-                        prisma y la longitud de los lados. Modificar estos valores cambia el tamaño y proporción de
-                        todas las celdas del grid.
-                    </li>
-                    <li><b>Cell Swizzle</b> (Configuración de ejes para transformaciones espaciales)<br>
-                        Determina cómo se asignan los ejes X, Y y Z del grid en el espacio 3D. Cambiar el swizzle puede
-                        ser útil para adaptar el grid a diferentes orientaciones de cámara o estilos de juego.
-                    </li>
-                    <li><b>Cell Gap</b> (Espacio entre celdas)<br>
-                        Permite añadir un espacio adicional entre las celdas hexagonales en los ejes X, Y y Z. Es útil
-                        para crear grids menos compactos o para separar visualmente los hexágonos.
-                    </li>
-                </ul>
-                <div style="margin:0.7em 0 0.7em 0; color:#ffe082; font-weight:600;">Los siguientes sirven solo para el
-                    debug o el modo de visualización en el editor:</div>
-                <ul style="margin-bottom:2em;">
-                    <li><b>Enable Debug</b> (Activar todas las herramientas de debug visual)<br>
-                        Habilita herramientas visuales adicionales para depuración, como la visualización de vecinos,
-                        rangos y otras ayudas gráficas útiles durante el desarrollo y testeo.
-                    </li>
-                    <li><b>Neighbor Radius</b> (Alcance de vecinos hexagonales a mostrar desde el centro)<br>
-                        Define cuántos anillos de celdas vecinas se muestran alrededor de la celda central cuando el
-                        debug está activado. Es útil para visualizar áreas de influencia, rangos de movimiento o
-                        selección.
-                    </li>
-                    <li><b>Height Range</b> (Rango de altura (Y) a mostrar arriba y abajo del centro)<br>
-                        Permite visualizar celdas en diferentes niveles verticales (Y) respecto a la celda central,
-                        facilitando la edición y depuración de mapas en 3D con varias alturas.
-                    </li>
-                    <li><b>Show Grid</b> (Mostrar el grid en la Scene View)<br>
-                        Activa o desactiva la visualización del grid hexagonal en la ventana de escena de Unity.
-                    </li>
-                    <li><b>Grid Color</b> (Color del grid en la Scene View)<br>
-                        Permite elegir el color con el que se dibuja el grid en la escena, facilitando la visualización
-                        según el fondo o el tipo de mapa.
-                    </li>
-                    <li><b>Show Coordinates</b> (Mostrar coordenadas de los hexágonos como texto en Scene View)<br>
-                        Muestra las coordenadas de cada celda hexagonal directamente en la escena, lo que facilita la
-                        identificación y depuración de posiciones específicas.
-                    </li>
-                    <li><b>Coordinates Color</b> (Color del texto de coordenadas)<br>
-                        Permite personalizar el color del texto de las coordenadas para mejorar la visibilidad sobre
-                        diferentes fondos.
-                    </li>
-                    <li><b>Coordinates Size</b> (Tamaño del texto de coordenadas)<br>
-                        Ajusta el tamaño del texto que muestra las coordenadas en la escena, útil para adaptarse a
-                        diferentes escalas de grid o distancias de cámara.
-                    </li>
-                </ul>
-
-                <h4 id="hexagon-tile-layer">HEXAGON TILE LAYER</h4>
-                <div style="display:flex; justify-content:center; align-items:center; margin:0.7em 0 1.2em 0;">
-                    <img src="img/HexagonLayer.jpg" alt="HEXAGON TILE LAYER"
-                        style="max-width:340px; border-radius:12px; border:2px solid #23272b; box-shadow:0 2px 12px rgba(0,0,0,0.18);">
-                </div>
-                <ul style="margin-bottom:1.2em;">
-                    <li><b>Hexagon Grid Reference</b> (Referencia al grid hexagonal padre)<br>
-                        Vincula esta capa a un componente HexagonGrid3D. Es fundamental para que la capa herede la
-                        geometría, orientación y configuración del grid principal. Si no está asignado, la capa no podrá
-                        calcular posiciones ni alinear objetos correctamente.
-                    </li>
-                    <li><b>Floor Cell</b> (Celda de piso donde se colocan los objetos por defecto)<br>
-                        Define el nivel base (en unidades del grid) donde se colocan los objetos por defecto en esta
-                        capa. Puede ser negativo para crear capas subterráneas o positivo para niveles elevados. Es útil
-                        para organizar mapas en diferentes alturas o pisos.
-                    </li>
-                    <li><b>Base Gizmo Color</b> (Color del plano base hexagonal en los gizmos)<br>
-                        Permite personalizar el color con el que se dibuja la capa en la Scene View. Esto facilita
-                        distinguir visualmente entre diferentes capas o resaltar la capa activa durante la edición.
-                    </li>
-                </ul>
-                <div style="margin:0.7em 0 0.7em 0; color:#ffe082; font-weight:600;">Secciones adicionales del
-                    inspector:</div>
-                <ul style="margin-bottom:2em;">
-                    <li><b>Layer Statistics</b> (Estadísticas de la capa)<br>
-                        Muestra información útil sobre la capa, como la cantidad de celdas ocupadas y el número total de
-                        objetos registrados. Ayuda a monitorear el uso y la densidad de la capa durante el desarrollo.
-                    </li>
-                    <li><b>Cleanup Null References</b> (Limpiar referencias nulas)<br>
-                        Botón que elimina referencias a objetos que ya no existen o han sido eliminados, manteniendo el
-                        registro de ocupación limpio y evitando errores.
-                    </li>
-                    <li><b>Rebuild from Hierarchy</b> (Reconstruir desde jerarquía)<br>
-                        Reconstruye el registro de ocupación de celdas analizando todos los HexagonObject hijos en la
-                        jerarquía. Útil si se han hecho cambios manuales en la escena o se han movido objetos entre
-                        capas.
-                    </li>
-                </ul>
-            </section>
-
-
-            <section id="interfaz-herramienta">
-                <h3>2. Interfaz de la herramienta</h3>
-                <div style="display:flex; justify-content:center; align-items:center; margin:0.7em 0 1.2em 0;">
-                    <img src="img/HexagonMapToolsBase.JPG" alt="Ventana principal Hexagon Map Tool V2"
-                        style="max-width:600px; border-radius:12px; border:2px solid #23272b; box-shadow:0 2px 12px rgba(0,0,0,0.18);">
-                </div>
-                <p>La ventana principal de la <b>Hexagon Map Tool V2</b> es el centro de control para la creación,
-                    edición y gestión de mapas hexagonales en Unity. Su diseño modular y su interfaz intuitiva permiten
-                    a usuarios de todos los niveles trabajar de manera eficiente con grids, capas y objetos hexagonales.
-                </p>
-                <ul style="margin-bottom:1.2em;">
-                    <li><b>Título y Encabezado</b><br>
-                        El encabezado muestra el nombre de la herramienta y un subtítulo descriptivo. Esto ayuda a
-                        identificar rápidamente la ventana y su propósito dentro del editor de Unity.<br>
-                        <span style="color:#b0b4b9; font-size:0.97em;">(Se puede ocultar el título desde el menú de
-                            opciones)</span>
-                    </li>
-                    <li><b>Selección de Grid (“Grid seleccionado”)</b><br>
-                        <ul>
-                            <li><b>Dropdown de grids:</b> Permite seleccionar el grid hexagonal activo en la escena.
-                                Solo los grids presentes en la escena actual aparecen en la lista. Si no hay grids
-                                disponibles, el dropdown lo indica y deshabilita las opciones relacionadas.</li>
-                            <li><b>Botón “+” (Crear nuevo grid):</b> Crea un nuevo grid hexagonal en la escena y lo
-                                selecciona automáticamente. Útil para iniciar rápidamente un nuevo mapa o área de
-                                trabajo.</li>
-                        </ul>
-                    </li>
-                    <li><b>Selección de Layer (“Layer seleccionado”)</b><br>
-                        <ul>
-                            <li><b>Dropdown de layers:</b> Muestra todas las capas (layers) asociadas al grid
-                                seleccionado. Permite elegir la capa activa para edición. Las capas deshabilitadas se
-                                indican visualmente. Incluye la opción “[+] Nuevo layer” para crear una nueva capa
-                                directamente desde el menú.</li>
-                            <li><b>Botón “+” (Crear nuevo layer):</b> Crea una nueva capa hexagonal en el grid
-                                seleccionado. Se recomienda nombrar y configurar la capa tras su creación.</li>
-                            <li><b>Botón “Actualizar”:</b> Reconstruye y sincroniza la información de la capa
-                                seleccionada con la jerarquía de la escena. Útil si se han realizado cambios manuales en
-                                la estructura de objetos o si se detectan inconsistencias.</li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <h4 id="tab-tools">Pestaña: Herramientas (Tools)</h4>
-
-                <h4 id="tab-grid">Pestaña: Grid</h4>
-                <p>Configuración avanzada del grid seleccionado, incluyendo geometría, tamaño, orientación y opciones de
-                    visualización.</p>
-
-                <h4 id="tab-layer">Pestaña: Capa (Layer)</h4>
-                <p>Gestión y edición de las capas hexagonales, con herramientas para manipular objetos, estadísticas y
-                    utilidades de limpieza.</p>
-
-                <h4 id="tab-options">Pestaña: Opciones (Options)</h4>
-                <p>Preferencias generales de la herramienta, ajustes de visualización, idioma y otras configuraciones
-                    globales.</p>
-            </section>
-
-            <section id="opciones-avanzadas">
-                <h3>6. Opciones avanzadas</h3>
-                <p>Explora configuraciones y herramientas adicionales para usuarios avanzados, como automatización,
-                    integración con otros sistemas o scripts personalizados.</p>
-            </section>
-            <section id="personalizacion-entorno">
-                <h3>7. Personalización de entorno</h3>
-                <p>Aprende a adaptar la herramienta a tus preferencias, modificar atajos, temas visuales y ajustar el
-                    entorno de trabajo para una experiencia óptima.</p>
-            </section>
-            <section id="problemas">
-                <h3>7. Solución de problemas</h3>
-                <div class="troubleshoot-accordion">
-                    <div class="trouble-item">
-                        <button class="trouble-question"
-                            onclick="this.nextElementSibling.classList.toggle('show'); this.classList.toggle('active');">
-                            <span style="font-weight:600; color:#ffb347;">&#9888; Problema:</span> Mi layer parece tener
-                            espacios ocupados cuando no hay nada o si está ocupado, lo reconoce como vacío.
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>1. Configuración Inicial de la Escena (Método Rápido)</span>
                         </button>
-                        <div class="trouble-answer">
-                            <span style="font-weight:600; color:#7ed957;">Solución:</span> Haz clic en el botón de
-                            <b>Actualizar</b> al lado del layer para refrescar el estado de ocupación de las celdas.
+                        <div class="accordion-content">
+                            <h5>✨ Configuración Automática (Recomendado)</h5>
+                            <ol>
+                                <li><strong>Abre la herramienta</strong> Hexagon Map Tool V2 desde el menú de Unity.
+                                </li>
+                                <li><strong>Crea tu primer Layer:</strong> Haz clic en el botón <code>[+]</code> al lado
+                                    del dropdown de Layers.</li>
+                                <li><strong>Asigna un nombre</strong> al layer en la ventana modal (ej: "Terrain",
+                                    "Buildings", etc.).</li>
+                                <li><strong>¡Listo!</strong> El sistema creará automáticamente:
+                                    <ul>
+                                        <li>Un Grid con valores por defecto (si no existe uno en la escena)</li>
+                                        <li>Un Layer con el nombre especificado</li>
+                                        <li>Todas las referencias y jerarquía configuradas automáticamente</li>
+                                    </ul>
+                                </li>
+                            </ol>
+
+                            <div class="quick-start-tips"
+                                style="margin-top: 1.5rem; background: rgba(126, 207, 255, 0.1); border-left-color: #7ecfff;">
+                                <h5>💡 Métodos Alternativos</h5>
+                                <ul>
+                                    <li><strong>Desde un modelo 3D:</strong> Añade el componente
+                                        <code>HexagonObject</code> a cualquier objeto. Esto creará automáticamente un
+                                        Grid (usando las dimensiones del objeto) y un Layer, configurando toda la
+                                        jerarquía.
+                                    </li>
+                                    <li><strong>Configuración manual:</strong> Si prefieres control total, puedes crear
+                                        GameObjects vacíos y añadir los componentes <code>HexagonGrid3D</code> y
+                                        <code>HexagonTileLayer</code> manualmente. Ver detalles en la sección <a
+                                            href="#components">Componentes Técnicos</a>.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>2. Integración de Modelos 3D y Creación de Pinceles</span>
+                        </button>
+                        <div class="accordion-content">
+                            <h5>📦 Paso 1: Preparar el Modelo 3D</h5>
+                            <ol>
+                                <li><strong>Importa tu modelo</strong> a la carpeta <code>Assets/</code>.</li>
+                                <li><strong>⚠️ Verifica la orientación:</strong>
+                                    <div class="quick-start-tips"
+                                        style="margin: 1rem 0; background: rgba(255, 193, 7, 0.1); border-left-color: #ffc107;">
+                                        <p><strong>⚠️ Importante:</strong> El modelo debe verse correctamente orientado
+                                            cuando su rotación está en <code>(0, 0, 0)</code>.</p>
+                                        <p><strong>Problema común:</strong> Algunos modelos importados tienen rotaciones
+                                            incorrectas (ej: Y=-90°) y algunos desarrolladores compensan rotando el
+                                            objeto en Unity.</p>
+                                        <p><strong>❌ Esto causa problemas</strong> porque la herramienta usa rotación
+                                            (0,0,0) como base para cálculos hexagonales y rotaciones del mesh.</p>
+                                        <p><strong>✅ Solución recomendada:</strong> Corrige la orientación del modelo en
+                                            tu software de modelado 3D.</p>
+                                        <p><strong>🔧 Solución alternativa:</strong> Si no puedes modificar el modelo:
+                                        <ul>
+                                            <li>Crea un GameObject vacío con rotación <code>(0, 0, 0)</code></li>
+                                            <li>Añade el componente <code>HexagonObject</code> al objeto vacío</li>
+                                            <li>Coloca el modelo como hijo del objeto vacío</li>
+                                            <li>Rota el modelo hijo para corregir su orientación</li>
+                                        </ul>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li><strong>Pivote del modelo:</strong>
+                                    <ul>
+                                        <li><strong>Recomendado:</strong> Pivote en la base inferior bien centrado</li>
+                                        <li><strong>No obligatorio:</strong> La herramienta permite ajustar el offset
+                                            del pivote si es necesario</li>
+                                    </ul>
+                                </li>
+                            </ol>
+
+                            <h5>🔧 Paso 2: Configurar el HexagonObject</h5>
+                            <ol>
+                                <li>Arrastra el modelo a la escena (o crea el GameObject vacío si usas la solución
+                                    alternativa)</li>
+                                <li>Añade el componente <code>HexagonObject</code></li>
+                                <li>Configura las propiedades:
+                                    <ul>
+                                        <li><code>Pivot Offset</code>: Ajusta si el pivote no está centrado (automático
+                                            con botón Calculate Properties)</li>
+                                        <li><code>Height Cells</code>: Cuántas celdas hexagonales de altura ocupa este
+                                            objeto</li>
+                                        <li><code>Is Stackable</code>: Permite que otros objetos se apilen encima</li>
+                                        <li><code>Is Hexagon Prop</code>: Marca como decorativo (árboles, rocas). El
+                                            pincel lo ignorará excepto con el borrador</li>
+                                        <li><code>Requires Floor</code>: Requiere un objeto sólido debajo para ser
+                                            colocado (excepto a nivel del suelo)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Tip:</strong> Usa el botón <code>Calculate Properties</code> en el menú
+                                    contextual del componente para calcular automáticamente el Pivot Offset y Height
+                                    Cells</li>
+                                <li>Crea un prefab arrastrando el objeto a tu carpeta de Prefabs</li>
+                                <li><em>(Opcional) Organiza tus prefabs en subcarpetas según tu preferencia</em></li>
+                            </ol>
+
+                            <h5>🎨 Paso 3: Añadir el Prefab como Pincel</h5>
+
+                            <div class="quick-start-tips"
+                                style="margin: 1rem 0; background: rgba(58, 141, 222, 0.1); border-left-color: #3a8dde;">
+                                <p><strong>💡 Recomendación:</strong> La primera vez, crea una nueva paleta antes de
+                                    añadir pinceles. Haz clic en el botón <code>[+]</code> que está al lado del dropdown
+                                    de paletas en Drawing Palettes.</p>
+                            </div>
+
+                            <p><strong>Método 1: Arrastrar y Soltar (Rápido)</strong></p>
+                            <ol>
+                                <li>Abre la herramienta Hexagon Map Tool V2, ve al tab <strong>Tools</strong></li>
+                                <li>Arrastra tu prefab al <strong>botón verde</strong> de Drawing Palettes</li>
+                                <li>Se abrirá un modal para crear un nuevo pincel con tu prefab</li>
+                                <li><em>(Opcional)</em> Añade más prefabs al pincel:
+                                    <ul>
+                                        <li>Haz clic en el botón verde <code>[+]</code> del modal o arrastra más prefabs
+                                            en el mismo para crear variaciones</li>
+                                        <li>Esto permite usar patrones como <strong>Random</strong> para distribuir las
+                                            variantes</li>
+                                    </ul>
+                                </li>
+                                <li>Haz clic en <strong>Crear</strong></li>
+                            </ol>
+
+                            <p><strong>Método 2: Botón [+] (Detallado)</strong></p>
+                            <ol>
+                                <li>Haz clic en el botón verde <code>[+]</code> de Drawing Palettes</li>
+                                <li>Se abrirá el modal de crear pincel (vacío)</li>
+                                <li>Para añadir prefabs tienes dos opciones:
+                                    <ul>
+                                        <li><strong>Arrastrar:</strong> Arrastra tu prefab al botón <code>[+]</code> del
+                                            modal</li>
+                                        <li><strong>Seleccionar:</strong> Haz clic en el botón <code>[+]</code> del
+                                            modal → se abrirá una lista de todos los HexagonObjects válidos en tu
+                                            proyecto → selecciona el que desees</li>
+                                    </ul>
+                                </li>
+                                <li>Haz clic en <strong>Crear</strong></li>
+                            </ol>
+
+                            <div class="quick-start-tips" style="margin-top: 1rem;">
+                                <h5>💡 Nota sobre la Paleta Default</h5>
+                                <p>Si intentas crear un pincel mientras estás en la paleta <strong>Default</strong>, el
+                                    sistema te pedirá que crees una nueva paleta primero. Simplemente introduce el
+                                    nombre de tu nueva paleta en el modal que aparecerá.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-start-tips">
+                    <h4>🎨 Cómo Usar los Pinceles</h4>
+                    <p>Una vez que hayas creado tu paleta con éxito, verás los pinceles disponibles en el panel de
+                        Drawing Palettes.</p>
+
+                    <h5>Seleccionar un Pincel</h5>
+                    <ul>
+                        <li><strong>Haz clic en un pincel</strong> para seleccionarlo. Se resaltará en <strong
+                                style="color: #4ade80;">verde</strong> indicando que está activo.</li>
+                        <li><strong>Para deseleccionar:</strong> Haz clic nuevamente en el pincel resaltado o presiona
+                            la tecla <code>ESC</code>.</li>
+                    </ul>
+
+                    <h5>Pintar en la Escena</h5>
+                    <ol>
+                        <li>Con un pincel seleccionado, mueve tu cursor a la <strong>Scene View</strong></li>
+                        <li><strong>Haz clic</strong> en una celda hexagonal para instanciar el objeto</li>
+                        <li><strong>Arrastra el cursor</strong> mientras mantienes presionado el botón para pintar
+                            múltiples celdas</li>
+                        <li>Usa <strong>Ctrl+Z</strong> para deshacer acciones si es necesario</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Interface Section -->
+            <section id="interface" class="section-card">
+                <h2 class="section-title">🎨 Interfaz: Tabs del Editor</h2>
+                <p class="section-intro">El editor se divide en 4 tabs principales, cada uno con funciones específicas.
+                </p>
+
+                <div class="tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" data-tab="tools">Tools</button>
+                        <button class="tab-button" data-tab="grid">Grid</button>
+                        <button class="tab-button" data-tab="layer">Layer</button>
+                        <button class="tab-button" data-tab="options">Options</button>
+                    </div>
+
+                    <!-- Tools Tab -->
+                    <div id="tab-tools" class="tab-content active">
+                        <h3>🖌️ Tools Tab: Herramientas de Pintura</h3>
+                        <p>Configuración del pincel y gestión de paletas para pintar en el mapa hexagonal.</p>
+
+                        <div class="quick-start-tips" style="background: rgba(255, 224, 130, 0.15); border-left-color: #ffe082;">
+                            <h4>⚠️ Requisitos para Usar las Herramientas</h4>
+                            <p>El tab se deshabilita automáticamente en estas situaciones:</p>
+                            <ul>
+                                <li><strong>No hay Layer seleccionado:</strong> Muestra botón "Crear Layer" para solucionar.</li>
+                                <li><strong>Layer deshabilitado en jerarquía:</strong> Muestra botón "Fix now" para habilitarlo automáticamente.</li>
+                                <li><strong>Layer marcado como no visible:</strong> Muestra botón "Fix now" para hacerlo visible.</li>
+                            </ul>
+                        </div>
+
+                        <div style="margin-top: 2rem;"></div>
+
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Modo de Pintado</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Define cómo se colocan los objetos en el mapa. Se selecciona mediante toolbar de 4 opciones.</p>
+                                    
+                                    <h5>Default</h5>
+                                    <p>Pinta en altura fija especificada. El sistema busca automáticamente la primera altura libre desde la celda apuntada hacia arriba.</p>
+                                    <ul>
+                                        <li><strong>Uso:</strong> Construcción general con control manual de altura.</li>
+                                        <li><strong>Parámetros activos:</strong> Floor Cell, Altura de Pincel.</li>
+                                        <li><strong>Comportamiento del radio:</strong> Expande horizontalmente según BrushSize desde el centro encontrado.</li>
+                                        <li><strong>Altura de Pincel:</strong> Multiplica capas verticalmente. La separación entre capas se calcula usando el HeightCells del prefab más bajo del brush.</li>
+                                        <li><strong>Durante arrastre:</strong> Mantiene la altura inicial del primer clic para pintar plano.</li>
+                                    </ul>
+
+                                    <h5>Over Level</h5>
+                                    <p>Detecta la superficie de cada celda y pinta encima. Cada posición horizontal calcula su propia altura independientemente.</p>
+                                    <ul>
+                                        <li><strong>Uso:</strong> Añadir capas sobre terreno irregular, apilar estructuras respetando desniveles.</li>
+                                        <li><strong>Parámetros activos:</strong> Floor Cell, Altura de Pincel.</li>
+                                        <li><strong>Detección de superficie:</strong> Si la celda está ocupada, sube hasta encontrar espacio libre. Si está vacía, baja hasta encontrar suelo o alcanzar FloorCell.</li>
+                                        <li><strong>Adaptación al terreno:</strong> Perfecto para seguir contornos naturales del mapa.</li>
+                                        <li><strong>Altura de Pincel:</strong> Apila capas verticalmente desde la superficie detectada.</li>
+                                    </ul>
+
+                                    <h5>Flatten</h5>
+                                    <p>Elimina terreno superior y rellena desde el Floor Cell hasta la altura objetivo, creando superficie plana.</p>
+                                    <ul>
+                                        <li><strong>Uso:</strong> Crear plataformas planas, nivelar terreno irregular.</li>
+                                        <li><strong>Parámetro activo:</strong> Floor Cell (no usa Altura de Pincel).</li>
+                                        <li><strong>Proceso de aplanamiento:</strong>
+                                            <ol style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                                <li>Elimina objetos por encima de la altura objetivo</li>
+                                                <li>Rellena desde FloorCell hasta la altura objetivo</li>
+                                            </ol>
+                                        </li>
+                                        <li><strong>Opciones de remoción:</strong>
+                                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                                <li><strong>Remover vecinos directos (activado):</strong> Elimina TODO por encima, sin límite de altura.</li>
+                                                <li><strong>Rango de remoción (desactivado lo anterior):</strong> Solo elimina hasta una altura máxima específica. Si es 0, no elimina nada (solo rellena).</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+                                    <div class="quick-start-tips" style="margin-top: 1rem; background: rgba(126, 207, 255, 0.1); border-left-color: #7ecfff;">
+                                        <p><strong>💡 Ejemplo práctico:</strong> Para crear una plataforma en altura 5 sin destruir construcciones altas (edificios en altura 10+), desactiva "Remover vecinos directos" y establece "Rango de remoción" en 7. Así limpia hasta altura 12 (5+7) pero respeta edificios más altos.</p>
+                                    </div>
+
+                                    <h5>Fill Volume</h5>
+                                    <p>Rellena completamente el volumen tridimensional desde el Floor Cell hasta la celda apuntada, capa por capa.</p>
+                                    <ul>
+                                        <li><strong>Uso:</strong> Crear montañas, colinas, pilares, terraformado masivo.</li>
+                                        <li><strong>Parámetro activo:</strong> Floor Cell (no usa Altura de Pincel).</li>
+                                        <li><strong>Cálculo de capas:</strong> TotalCapas = CeldaApuntada.Y - FloorCell + 1</li>
+                                        <li><strong>Separación vertical:</strong> Usa el HeightCells del prefab más pequeño del brush.</li>
+                                        <li><strong>Ejemplo:</strong> Si FloorCell=0 y apuntas a Y=5, rellena las capas 0, 1, 2, 3, 4 y 5 (6 capas totales).</li>
+                                        <li><strong>Importante:</strong> Respeta RequiresFloor de los prefabs - solo coloca objetos si tienen suelo debajo.</li>
+                                    </ul>
+
+                                    <h5>Opción Global</h5>
+                                    <ul>
+                                        <li><strong>Reemplazar Existentes:</strong> Si está activado, elimina objetos en cada celda antes de pintar. Si está desactivado, detecta ocupación y respeta objetos ya colocados (no sobrescribe).</li>
+                                    </ul>
+
+                                    <div class="quick-start-tips" style="margin-top: 1rem; background: rgba(255, 224, 130, 0.15); border-left-color: #ffe082;">
+                                        <p><strong>⚠️ Colisiones entre Layers:</strong> El sistema verifica colisiones entre layers usando la Collision Matrix del Grid Tab. Si dos layers tienen colisión deshabilitada, pueden coexistir en la misma celda.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Tamaño del Pincel</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Controla el área horizontal de pintado (radio en hexágonos).</p>
+                                    
+                                    <h5>Radio de Pintado</h5>
+                                    <ul>
+                                        <li><strong>Valores:</strong> 0 = solo centro, 1 = centro + 6 vecinos, 2+ = anillos adicionales.</li>
+                                        <li><strong>Control:</strong> Slider con límites configurables (mín/máx colapsables).</li>
+                                        <li><strong>Shortcuts:</strong> <code>+</code>/<code>-</code> para aumentar/disminuir.</li>
+                                        <li><strong>Preview:</strong> Se visualiza en la Scene View con gizmo.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Altura</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Configura la altura del pintado en el mapa.</p>
+                                    
+                                    <h5>Floor Cell</h5>
+                                    <ul>
+                                        <li><strong>Función:</strong> Altura base del layer actual, sincronizado automáticamente con HexagonTileLayer.</li>
+                                        <li><strong>Comportamiento:</strong> Solo editable cuando hay un layer seleccionado.</li>
+                                        <li><strong>Límites:</strong> Se ajustan automáticamente al valor del layer para evitar restricciones.</li>
+                                        <li><strong>Uso:</strong> Define desde dónde comienza el terreno del layer.</li>
+                                    </ul>
+
+                                    <h5>Altura de Pincel (solo Default y Over Level)</h5>
+                                    <ul>
+                                        <li><strong>Función:</strong> Número de capas verticales pintadas simultáneamente.</li>
+                                        <li><strong>Importante:</strong> Cada capa respeta la altura (HeightCells) de los prefabs.</li>
+                                        <li><strong>Separación entre capas:</strong> Se calcula multiplicando por el HeightCells del prefab más pequeño del brush.</li>
+                                        <li><strong>Ejemplo:</strong> Con BrushHeight=3 y prefabs de HeightCells=2, crea capas en Y=0, Y=2, Y=4 (6 celdas verticales totales).</li>
+                                        <li><strong>Límites configurables:</strong> Mín/máx expandibles en foldout.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Rotación</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Controla la orientación de los objetos al pintarlos.</p>
+                                    
+                                    <h5>Rotación Aleatoria</h5>
+                                    <ul>
+                                        <li><strong>Toggle:</strong> Activa/desactiva rotaciones aleatorias.</li>
+                                        <li><strong>Ángulos Permitidos:</strong> Selecciona qué ángulos usar (0°, 60°, 120°, 180°, 240°, 300°).</li>
+                                        <li><strong>Restricción:</strong> Mínimo 2 ángulos deben estar seleccionados.</li>
+                                        <li><strong>Uso:</strong> Crear variedad natural en decoración y vegetación.</li>
+                                    </ul>
+
+                                    <h5>Rotación Fija (si aleatoria está desactivada)</h5>
+                                    <ul>
+                                        <li><strong>Slider:</strong> Define ángulo exacto para todos los objetos.</li>
+                                        <li><strong>Valores:</strong> Múltiplos de 60° (0°, 60°, 120°, 180°, 240°, 300°).</li>
+                                        <li><strong>Shortcuts:</strong> <code>Alt + Scroll</code> para rotar en Scene View.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Patrón de Distribución</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Define cómo se distribuyen los prefabs del brush seleccionado dentro del área de pintado.</p>
+                                    
+                                    <h5>Patrones Disponibles</h5>
+                                    <ul>
+                                        <li><strong>Random:</strong> Selección aleatoria de prefabs en cada celda. Funciona con cualquier cantidad de prefabs.</li>
+                                        <li><strong>Sequential:</strong> Coloca prefabs en orden secuencial (0→1→2→0...). Funciona con cualquier cantidad.</li>
+                                        <li><strong>Alternating Ring:</strong> Alterna prefabs por anillos concéntricos desde el centro. Requiere exactamente 2 prefabs. Durante arrastre mantiene el centro fijo.</li>
+                                        <li><strong>Diagonal:</strong> Crea patrón diagonal alternando 2 prefabs según la suma de coordenadas (X+Z). Requiere exactamente 2 prefabs.</li>
+                                        <li><strong>Stripe:</strong> Genera franjas horizontales paralelas (dirección eje Z). Requiere mínimo 2 prefabs. Durante arrastre mantiene el centro fijo.</li>
+                                        <li><strong>Border Only:</strong> Pinta solo el perímetro del brush, dejando el centro vacío. Funciona con cualquier cantidad de prefabs.</li>
+                                    </ul>
+
+                                    <div class="quick-start-tips" style="margin-top: 1rem; background: rgba(126, 207, 255, 0.1); border-left-color: #7ecfff;">
+                                        <p><strong>💡 Rotaciones por celda:</strong> Si "Rotación Aleatoria" está activa, cada celda 3D (x,y,z) tiene su propia rotación única, incluso en diferentes capas verticales de la misma posición horizontal.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Botón Reset</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Restaura toda la configuración del pincel a sus valores por defecto.</p>
+                                    <ul>
+                                        <li>Ubicado en la esquina superior derecha del panel de configuración.</li>
+                                        <li>Afecta: Modo, Tamaño, Altura, Rotación y Patrón.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 2rem;"></div>
+
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Drawing Palettes: Paletas de Dibujo</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Sistema de gestión de pinceles organizados en paletas.</p>
+
+                                    <h5>Selector de Paleta y Controles</h5>
+                                    <ul>
+                                        <li><strong>Dropdown:</strong> Lista de todas las paletas disponibles en el proyecto.</li>
+                                        <li><strong>Opción "[+] Nueva Paleta":</strong> Última opción del dropdown, abre ventana de creación.</li>
+                                        <li><strong>Persistencia:</strong> La última paleta seleccionada se guarda automáticamente en EditorPrefs.</li>
+                                    </ul>
+
+                                    <h5>Botones de Gestión de Paletas</h5>
+                                    <table style="width: 100%; border-collapse: collapse; line-height: 1.8; margin-top: 1rem;">
+                                        <tr style="background: rgba(126, 207, 255, 0.05);">
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); font-family: monospace; font-weight: 600; width: 20%; text-align: center;"><code>[+]</code></td>
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Crear Paleta:</strong> Abre ventana modal para definir nombre. La paleta se crea automáticamente en la carpeta correcta del proyecto.</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); font-family: monospace; font-weight: 600; text-align: center;"><code>↻</code></td>
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Actualizar:</strong> Refresca la lista de paletas desde el proyecto. Útil si se añadieron/eliminaron paletas manualmente.</td>
+                                        </tr>
+                                        <tr style="background: rgba(126, 207, 255, 0.05);">
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); font-weight: 600; text-align: center;">Renombrar</td>
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Renombrar Paleta:</strong> Abre ventana modal para cambiar el nombre. Deshabilitado para paleta "Default".</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); font-weight: 600; text-align: center;">Eliminar</td>
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Eliminar Paleta:</strong> Borra la paleta del proyecto (solicita confirmación). Deshabilitado para paleta "Default".</td>
+                                        </tr>
+                                    </table>
+
+                                    <div class="quick-start-tips" style="margin: 1rem 0; background: rgba(255, 224, 130, 0.15); border-left-color: #ffe082;">
+                                        <p><strong>⚠️ Restricción:</strong> La paleta "Default" no puede ser renombrada ni eliminada. Los botones se deshabilitan automáticamente cuando está seleccionada.</p>
+                                    </div>
+
+                                    <h5>Lista de Brushes</h5>
+                                    <ul>
+                                        <li><strong>Visualización:</strong> Scroll vertical con previsualizaciones de todos los brushes de la paleta activa.</li>
+                                        <li><strong>Eraser especial:</strong> Primer item de la lista (índice -1), siempre disponible para borrar objetos.</li>
+                                        <li><strong>Drag & Drop:</strong> Arrastra prefabs HexagonObject desde Project directamente sobre el área de brushes para crear uno nuevo rápidamente.</li>
+                                        <li><strong>Botón Quick Add (+):</strong> Zona verde al final de la lista para añadir brushes haciendo click o arrastrando prefabs.</li>
+                                    </ul>
+
+                                    <div style="margin: 1rem 0; padding: 0.8rem; background: rgba(126, 207, 255, 0.08); border-left: 3px solid #7ecfff; border-radius: 4px;">
+                                        <p style="margin: 0; font-weight: 600; margin-bottom: 0.5rem;">Estado de selección del brush:</p>
+                                        <ul style="margin: 0.5rem 0 0 1.5rem; line-height: 1.6;">
+                                            <li><code>-2</code> = Ninguno seleccionado (no se puede pintar)</li>
+                                            <li><code>-1</code> = Eraser activo (borrador)</li>
+                                            <li><code>≥0</code> = Brush válido seleccionado (listo para pintar)</li>
+                                        </ul>
+                                    </div>
+
+                                    <h5>Shortcuts de Navegación</h5>
+                                    <table style="width: 100%; border-collapse: collapse; line-height: 1.8; margin-top: 1rem;">
+                                        <tr style="background: rgba(126, 207, 255, 0.05);">
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); font-family: monospace; font-weight: 600; width: 30%;"><code>Q</code></td>
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">Seleccionar brush anterior</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); font-family: monospace; font-weight: 600;"><code>E</code></td>
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">Seleccionar siguiente brush</td>
+                                        </tr>
+                                        <tr style="background: rgba(126, 207, 255, 0.05);">
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); font-family: monospace; font-weight: 600;"><code>R</code> o <code>Backspace</code></td>
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">Toggle eraser (activar/desactivar borrador)</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); font-family: monospace; font-weight: 600;"><code>ESC</code></td>
+                                            <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">Deseleccionar brush actual (vuelve a estado -2)</td>
+                                        </tr>
+                                    </table>
+
+                                    <h5>Gestión de Brushes</h5>
+                                    <ul>
+                                        <li><strong>Añadir (+):</strong> Botón verde al final de la lista, crea nuevo brush vacío en la paleta.</li>
+                                        <li><strong>Editar (icono lápiz):</strong> Abre ventana de edición del brush seleccionado para modificar nombre y prefabs.</li>
+                                        <li><strong>Eliminar (-):</strong> Borra el brush seleccionado de la paleta (solicita confirmación).</li>
+                                        <li><strong>Validación automática:</strong> Si el brush seleccionado contiene prefabs null, muestra warning con botón "Fix" para limpiar todos los brushes de la paleta automáticamente.</li>
+                                    </ul>
+
+                                    <div class="quick-start-tips" style="margin: 1rem 0; background: rgba(126, 207, 255, 0.1); border-left-color: #7ecfff;">
+                                        <p><strong>💡 Método Avanzado:</strong> Aunque puedes crear paletas manualmente con <code>Create → Hexagon Map Tool → Palette</code> en el Project, el botón <code>[+]</code> es más rápido y garantiza que se guarden en la ubicación correcta del proyecto.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grid Tab -->
+                    <div id="tab-grid" class="tab-content">
+                        <h3>📐 Grid Tab: Configuración de la Cuadrícula</h3>
+                        <p>Gestiona las propiedades del grid hexagonal y las interacciones entre layers.</p>
+
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Grid Info: Información del Grid</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Muestra información detallada del grid hexagonal seleccionado.</p>
+                                    
+                                    <h5>Información del Grid</h5>
+                                    <ul>
+                                        <li><strong>Nombre:</strong> Identificador del grid.</li>
+                                        <li><strong>Geometría Hexagonal:</strong> 
+                                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                                <li><strong>Radius:</strong> Distancia del centro a los vértices del hexágono.</li>
+                                                <li><strong>Apothem:</strong> Distancia del centro al punto medio de un lado.</li>
+                                                <li><strong>Height:</strong> Altura vertical de cada nivel hexagonal.</li>
+                                                <li><strong>Side Length:</strong> Longitud de cada lado.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Configuración de Celda:</strong> Tipo de coordinadas (CellSwizzle).</li>
+                                        <li><strong>Grid Position:</strong> Posición del grid en la escena.</li>
+                                        <li><strong>Cell Gap:</strong> Espaciado entre celdas hexagonales.</li>
+                                    </ul>
+
+                                    <h5>Acciones</h5>
+                                    <ul>
+                                        <li><strong>Editar:</strong> Abre el Inspector enfocado en el grid para modificar sus propiedades.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Collision Matrix: Matriz de Colisiones entre Capas</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Define qué layers pueden coexistir en las mismas celdas hexagonales.</p>
+                                    
+                                    <h5>Cómo Funciona</h5>
+                                    <ul>
+                                        <li><strong>Checkbox Marcado (✓):</strong> Los layers COLISIONAN - los objetos NO pueden superponerse en la misma celda.
+                                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                                <li>Ejemplo: Terrain ↔ Water marcado = el agua no puede colocarse sobre terreno.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Checkbox Desmarcado ( ):</strong> Los layers NO colisionan - los objetos SÍ pueden superponerse.
+                                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                                <li>Ejemplo: Terrain ↔ Decoration desmarcado = permite colocar decoración sobre terreno.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Por defecto:</strong> Todas las combinaciones están marcadas (todas colisionan).</li>
+                                    </ul>
+
+                                    <h5>Casos de Uso</h5>
+                                    <ul>
+                                        <li>Evitar superposición de terreno y agua</li>
+                                        <li>Permitir decoración sobre tiles de piso</li>
+                                        <li>Controlar qué elementos pueden apilarse en la misma posición</li>
+                                    </ul>
+
+                                    <h5>Detección de Conflictos</h5>
+                                    <ul>
+                                        <li><strong>Contador Automático:</strong> El sistema detecta objetos superpuestos que violan las reglas de la matriz.</li>
+                                        <li><strong>Botón "Seleccionar":</strong> Navega cíclicamente entre objetos conflictivos para resolverlos fácilmente.</li>
+                                        <li><strong>Excepción:</strong> Objetos con IsStackable=true no generan conflictos.</li>
+                                    </ul>
+
+                                    <h5>Acciones</h5>
+                                    <ul>
+                                        <li><strong>Botón Reset:</strong> Restaura todas las colisiones al estado por defecto (todas marcadas).</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Layer List: Lista de Capas del Grid</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Lista de todas las layers del grid seleccionado con controles rápidos.</p>
+                                    
+                                    <h5>Controles por Layer</h5>
+                                    <ul>
+                                        <li><strong>Checkbox Enable/Disable:</strong> Activa/desactiva el GameObject completo de la layer.</li>
+                                        <li><strong>Toggle Visibilidad:</strong> Muestra/oculta todos los objetos de la layer en la Scene View.</li>
+                                        <li><strong>Modo Gizmo:</strong> Alterna entre mostrar los meshes 3D normales o solo wireframes hexagonales.
+                                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                                <li>Útil para visualizar la ocupación de celdas sin distracciones visuales.</li>
+                                                <li>Usa el color base de la layer para todos los objetos.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Color Picker:</strong> Asigna un color a la layer para identificarla en modo gizmo.</li>
+                                        <li><strong>Botón Nombre:</strong> Selecciona la layer en la jerarquía. Muestra la cantidad de objetos que contiene.</li>
+                                    </ul>
+
+                                    <p><em>La layer actualmente seleccionada se resalta visualmente en la lista.</em></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Layer Tab -->
+                    <div id="tab-layer" class="tab-content">
+                        <h3>🗂️ Layer Tab: Gestión de Capas</h3>
+                        <p>Administra objetos en cada layer individual, con herramientas de análisis, catálogo visual y transferencia de datos.
+                        </p>
+
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Statistics: Estadísticas de la Capa</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Muestra información en tiempo real sobre el contenido y estado del layer seleccionado.</p>
+                                    
+                                    <h5>Información Disponible</h5>
+                                    <ul>
+                                        <li><strong>Nombre del Layer:</strong> Identificador de la capa actual.</li>
+                                        <li><strong>Objetos Registrados:</strong> Cantidad total de objetos en el layer.</li>
+                                        <li><strong>Celdas Ocupadas:</strong> Número de celdas hexagonales utilizadas (un objeto puede ocupar múltiples celdas según su altura).</li>
+                                        <li><strong>Conflictos Detectados:</strong> Identifica celdas con objetos superpuestos. Cuando hay conflictos, aparece un botón <strong>"Seleccionar"</strong> para navegar entre ellos y resolverlos fácilmente.</li>
+                                    </ul>
+
+                                    <h5>Acciones</h5>
+                                    <ul>
+                                        <li><strong>Actualizar:</strong> Reconstruye el registro del layer desde la jerarquía. Útil cuando los objetos fueron modificados externamente o si hay inconsistencias en el sistema.</li>
+                                        <li><strong>Editar:</strong> Abre el Inspector enfocado en el layer para modificar sus propiedades directamente.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Object Catalog: Catálogo de Instancias</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Lista visual de todos los objetos del layer, agrupados por tipo de prefab para facilitar su gestión.</p>
+                                    
+                                    <h5>Información por Prefab</h5>
+                                    <ul>
+                                        <li><strong>Color Identificador:</strong> Asigna un color único a cada tipo de prefab para identificarlos rápidamente en la escena con gizmos y wireframes.</li>
+                                        <li><strong>Preview del Prefab:</strong> Miniatura visual del objeto.
+                                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                                <li><strong>Click:</strong> Abre ventana para reemplazar todas las instancias por otro prefab.</li>
+                                                <li><strong>Drag & Drop:</strong> Arrastra un prefab sobre el preview para reemplazarlo directamente.</li>
+                                                <li>Al reemplazar, el sistema valida propiedades (Height, Stack, IsProp, RequiresFloor) y advierte sobre incompatibilidades.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Propiedades del Objeto:</strong> Muestra Height, Stack, Is Prop y Requires Floor para identificar rápidamente el comportamiento del objeto.</li>
+                                        <li><strong>Contador:</strong> Cantidad de instancias de este prefab en el layer.</li>
+                                    </ul>
+
+                                    <h5>Controles Disponibles</h5>
+                                    <ul>
+                                        <li><strong>Seleccionar Todos:</strong> Selecciona todas las instancias en el Hierarchy para editarlas o inspeccionarlas en conjunto.</li>
+                                        <li><strong>Toggle Visibilidad:</strong> Muestra/oculta todas las instancias de este prefab en la Scene View.</li>
+                                        <li><strong>Modo Gizmo:</strong> Alterna entre mostrar los meshes completos o solo wireframes hexagonales.
+                                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                                <li>Útil para visualizar la ocupación de celdas sin el ruido visual de los modelos 3D.</li>
+                                                <li>Puede combinarse con visibilidad para ver wireframes sin meshes.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Eliminar Todos:</strong> Elimina todas las instancias de este prefab (solicita confirmación).</li>
+                                    </ul>
+
+                                    <p><em>El catálogo se oculta cuando hay un preview de importación activo.</em></p>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Data Management: Gestión de Datos</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <h5>Exportar Layer</h5>
+                                    <p>Guarda el layer completo en un archivo JSON que puede ser compartido o reutilizado en otras escenas.</p>
+                                    <ul>
+                                        <li><strong>Qué se exporta:</strong> Posiciones, rotaciones, referencias a prefabs, configuración del layer y geometría del grid.</li>
+                                        <li><strong>Actualización automática:</strong> El nombre del layer se actualiza al nombre del archivo exportado.</li>
+                                        <li><strong>Formato JSON:</strong> Archivo legible que puede editarse manualmente si es necesario.</li>
+                                    </ul>
+
+                                    <h5>Importar Layer</h5>
+                                    <p>Carga datos desde un archivo JSON previamente exportado.</p>
+                                    
+                                    <div class="quick-start-tips" style="margin: 1rem 0; background: rgba(255, 224, 130, 0.15); border-left-color: #ffe082;">
+                                        <p><strong>⚠️ IMPORTANTE:</strong> El import elimina todos los objetos existentes en el layer antes de cargar los nuevos. Si hay objetos, solicita confirmación.</p>
+                                    </div>
+                                    
+                                    <ul>
+                                        <li><strong>Preview Obligatorio:</strong> Antes de cargar, se muestra un preview que permite:
+                                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                                <li>Revisar qué objetos se van a crear</li>
+                                                <li>Reasignar prefabs faltantes</li>
+                                                <li>Cancelar la operación si algo no es correcto</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Validación:</strong> El sistema verifica que todos los prefabs existan o puedan ser reemplazados.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Import Preview: Vista Previa de Importación</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Sistema de preview que te permite revisar y modificar los datos antes de confirmar la importación.</p>
+                                    
+                                    <h5>Vista en Escena</h5>
+                                    <ul>
+                                        <li><strong>Gizmos de Preview:</strong> Los objetos a importar se visualizan en sus posiciones exactas con gizmos hexagonales, permitiendo verificar que todo esté correcto antes de crear los objetos reales.</li>
+                                    </ul>
+
+                                    <h5>Panel de Preview</h5>
+                                    <ul>
+                                        <li><strong>Estadísticas:</strong> Muestra cuántos objetos y prefabs diferentes se van a importar.</li>
+                                        <li><strong>Lista de Prefabs:</strong> Detalla todos los prefabs necesarios y sus cantidades.</li>
+                                        <li><strong>Reasignación de Prefabs:</strong> Si falta algún prefab o deseas usar uno diferente, puedes reasignarlo antes de importar.</li>
+                                        <li><strong>Validación:</strong> Indica claramente qué prefabs están disponibles y cuáles necesitan atención.</li>
+                                    </ul>
+
+                                    <h5>Acciones Disponibles</h5>
+                                    <ul>
+                                        <li><strong>Cancelar:</strong> Descarta la importación y cierra el preview.</li>
+                                        <li><strong>Cargar:</strong> Ejecuta la importación y selecciona automáticamente todos los objetos creados.</li>
+                                    </ul>
+
+                                    <p><em>El preview se cancela automáticamente al cambiar de layer o de tab.</em></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Options Tab -->
+                    <div id="tab-options" class="tab-content">
+                        <h3>⚙️ Options Tab: Configuración y Preferencias</h3>
+                        <p>Ajustes generales del editor, idioma, apariencia del pincel, atajos y recursos de ayuda.</p>
+
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Configuration: Configuración General</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <h5>Idioma / Language</h5>
+                                    <p>Selector de idioma para la interfaz del editor.</p>
+                                    <ul>
+                                        <li><strong>Español (es)</strong> - Spanish</li>
+                                        <li><strong>English (en)</strong> - English</li>
+                                        <li><strong>日本語 (ja)</strong> - Japanese (AI-translated)</li>
+                                    </ul>
+                                    <p><em>Los cambios se aplican inmediatamente y repintan todas las ventanas del editor.</em></p>
+                                    <p><em>Nota: La traducción al japonés es generada por IA y puede contener expresiones no naturales.</em></p>
+
+                                    <h5>Interfaz / UI Settings</h5>
+                                    <ul>
+                                        <li><strong>Mostrar encabezado:</strong> Muestra/oculta el encabezado con el nombre de la herramienta en la parte superior de la ventana.</li>
+                                        <li><strong>Mostrar mensajes de ayuda:</strong> Activa/desactiva información de ayuda y tooltips detallados en la interfaz.</li>
+                                    </ul>
+
+                                    <h5>Apariencia del Pincel</h5>
+                                    <ul>
+                                        <li><strong>Modo de Visualización:</strong> Selecciona cómo se visualiza el brush en la escena:
+                                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                                <li><em>Default:</em> Muestra el gizmo con mesh semi-transparente</li>
+                                                <li><em>Wireframe:</em> Solo muestra el contorno del hexágono</li>
+                                                <li><em>Solid:</em> Muestra el mesh sólido del brush</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Color del pincel:</strong> Color del gizmo hexagonal del pincel en la escena.</li>
+                                        <li><strong>Color de rotación:</strong> Color de la línea que indica la rotación del pincel.</li>
+                                        <li><strong>Color de conflicto:</strong> Color para indicar posiciones conflictivas (cuando no se puede colocar un objeto).</li>
+                                        <li><strong>Color de celda apuntada:</strong> Color de la celda actualmente apuntada por el cursor.</li>
+                                        <li><strong>Color de eliminación:</strong> Color del brush cuando está en modo borrador.</li>
+                                    </ul>
+
+                                    <h5>Debug</h5>
+                                    <ul>
+                                        <li><strong>Mostrar Bounds de Colisión:</strong> Visualiza los bounds hexagonales virtuales en la escena:
+                                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                                <li><em>Azul:</em> Hexágonos del layer</li>
+                                                <li><em>Rojo:</em> Hexágono detectado por el raycast</li>
+                                                <li><em>Amarillo:</em> Ray desde la cámara</li>
+                                                <li><em>Verde:</em> Punto de colisión</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Mostrar mensajes de debug:</strong> Registra información de depuración en la consola (útil para desarrollo).</li>
+                                    </ul>
+
+                                    <h5>Restablecer Configuración</h5>
+                                    <p>Botón para restaurar todos los ajustes a sus valores predeterminados.</p>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Keyboard Shortcuts: Atajos de Teclado</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Lista de atajos de teclado disponibles para agilizar tu flujo de trabajo.</p>
+
+                                    <h5>Selección de Pinceles</h5>
+                                    <table class="shortcuts-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Atajo</th>
+                                                <th>Acción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>Q</code></td>
+                                                <td>Pincel anterior</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>E</code></td>
+                                                <td>Pincel siguiente</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>R</code> / <code>Backspace</code></td>
+                                                <td>Alternar borrador (activar/desactivar)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>ESC</code></td>
+                                                <td>Deseleccionar pincel</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <h5>Tamaño del Pincel</h5>
+                                    <table class="shortcuts-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Atajo</th>
+                                                <th>Acción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>+</code> / <code>-</code></td>
+                                                <td>Aumentar/Disminuir tamaño del pincel</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>Ctrl + Scroll</code></td>
+                                                <td>Cambiar tamaño con rueda del ratón</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <h5>Rotación del Pincel</h5>
+                                    <table class="shortcuts-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Atajo</th>
+                                                <th>Acción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>Alt + Scroll</code></td>
+                                                <td>Cambiar rotación con rueda del ratón</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>Help: Comunidad y Soporte</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Esta sección proporciona botones con enlaces directos a Discord, YouTube y un botón para copiar el email de contacto.</p>
+                                    <p>Tu opinión es importante. Comparte errores o sugerencias a través de nuestros canales de comunicación.</p>
+                                    <p style="margin-top: 1rem;"><em>Todos los enlaces de contacto también están disponibles en el footer de esta página.</em></p>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    <span class="accordion-icon">▶</span>
+                                    <span>About: Acerca de la Herramienta</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Muestra información básica sobre Hexagon Map Tool V2 (versión 2.0.0) e incluye un botón que abre una ventana con información detallada completa sobre la herramienta.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+            <!-- Components Section -->
+            <section id="components" class="section-card">
+                <h2 class="section-title">🧩 Componentes Técnicos</h2>
+                <p class="section-intro">Componentes principales de Unity que debes conocer para usar la herramienta.
+                </p>
+
+                <div class="accordion">
+                    <!-- HexagonObject Component -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>🔷 HexagonObject</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p><strong>Propósito:</strong> Componente que convierte cualquier GameObject en un objeto
+                                hexagonal válido para el sistema.</p>
+
+                            <h5>Grid Integration</h5>
+                            <ul>
+                                <li><code>Parent Layer Reference</code>: Referencia al HexagonTileLayer donde se registra
+                                </li>
+                                <li><code>Cell Coordinate</code>: Coordenada de la celda hexagonal que ocupa</li>
+                            </ul>
+
+                            <h5>Cell Properties</h5>
+                            <ul>
+                                <li><code>Pivot Offset</code>: Ajuste del pivote del objeto (se calcula automáticamente)
+                                </li>
+                                <li><code>Height Cells</code>: Cuántas celdas hexagonales de altura ocupa (1 por defecto)
+                                </li>
+                                <li><code>Is Stackable</code>: Permite que otros objetos se apilen encima</li>
+                                <li><code>Is Hexagon Prop</code>: Marca el objeto como decorativo (árboles, rocas, etc.)
+                                </li>
+                                <li><code>Requires Floor</code>: Requiere objeto sólido debajo para ser colocado</li>
+                            </ul>
+
+                            <h5>Métodos Públicos</h5>
+                            <ul>
+                                <li><code>CalculateProperties()</code>: Calcula automáticamente Pivot Offset y Height Cells basándose en el modelo 3D</li>
+                                <li><code>DoSnapToGrid()</code>: Alinea el objeto a la celda hexagonal más cercana del grid</li>
+                                <li><code>MoveTo(Vector3Int cellCoord)</code>: Mueve el objeto a una coordenada de celda específica</li>
+                                <li><code>ChangeLayer(HexagonTileLayer newLayer)</code>: Cambia el objeto a un layer diferente</li>
+                                <li><code>RegisterInLayer()</code>: Registra manualmente el objeto en su layer asignado</li>
+                                <li><code>UnregisterFromLayer()</code>: Desregistra el objeto de su layer actual</li>
+                            </ul>
+
+                            <h5>Uso en Runtime</h5>
+                            <ul>
+                                <li>Usa <code>DoSnapToGrid()</code> para alinear objetos movidos dinámicamente</li>
+                                <li>Usa <code>MoveTo()</code> para mover objetos entre celdas durante el juego</li>
+                                <li>Accede a <code>CellCoordinate</code> para saber en qué celda está el objeto</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- HexagonGrid3D Component -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>📐 HexagonGrid3D</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p><strong>Propósito:</strong> Define la geometría y parámetros del grid hexagonal 3D que sirve
+                                como base para todo el mapa.</p>
+
+                            <h5>Grid Geometry</h5>
+                            <ul>
+                                <li><code>Radius (R)</code>: Distancia del centro a cualquier vértice del hexágono</li>
+                                <li><code>Apothem (A)</code>: Distancia del centro al punto medio de cualquier lado</li>
+                                <li><code>Height (H)</code>: Altura del prisma hexagonal (distancia entre niveles)</li>
+                                <li><code>Side Length</code>: Longitud del lado del hexágono (calculado automáticamente)
+                                </li>
+                            </ul>
+
+                            <h5>Cell Configuration</h5>
+                            <ul>
+                                <li><code>Cell Gap</code>: Espacio adicional entre celdas</li>
+                                <li><code>Cell Swizzle</code>: Configuración de ejes espaciales (XYZ, XZY, etc.)</li>
+                            </ul>
+
+                            <h5>Debug & Visualization</h5>
+                            <ul>
+                                <li><code>Show Grid</code>: Muestra/oculta el grid en Scene View</li>
+                                <li><code>Grid Color</code>: Color de las líneas del grid</li>
+                                <li><code>Show Coordinates</code>: Muestra coordenadas hexagonales en Scene View</li>
+                                <li><code>Neighbor Radius</code>: Radio de vecinos a mostrar en debug</li>
+                                <li><code>Height Range</code>: Rango de altura a mostrar en debug</li>
+                            </ul>
+
+                            <h5>Métodos Públicos</h5>
+                            <ul>
+                                <li><code>WorldToCell(Vector3 worldPos)</code>: Convierte posición del mundo a coordenadas de celda hexagonal</li>
+                                <li><code>CellToWorld(Vector3Int cellPos)</code>: Convierte coordenadas de celda a posición del mundo</li>
+                                <li><code>GetCellCenterWorld(Vector3Int cellPos)</code>: Obtiene el centro de una celda en coordenadas del mundo</li>
+                                <li><code>GetHorizontalNeighbors(Vector3Int center, int range)</code>: Obtiene vecinos en el plano horizontal</li>
+                                <li><code>GetVerticalNeighbors(Vector3Int center, int range)</code>: Obtiene vecinos en el eje vertical</li>
+                                <li><code>GetNeighbors3D(Vector3Int center, int hRange, int vRange)</code>: Obtiene vecinos en un volumen 3D</li>
+                            </ul>
+
+                            <h5>Uso en Runtime</h5>
+                            <ul>
+                                <li>Usa <code>WorldToCell()</code> para convertir posiciones de mouse/raycast a celdas</li>
+                                <li>Usa <code>GetNeighbors3D()</code> para encontrar celdas adyacentes (movimiento, rango de ataque, etc.)</li>
+                                <li>Usa <code>CellToWorld()</code> para posicionar objetos en celdas específicas</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- HexagonTileLayer Component -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>🗂️ HexagonTileLayer</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p><strong>Propósito:</strong> Administra una capa de objetos sobre el grid. Cada layer
+                                representa un nivel o categoría de objetos (terreno, edificios, decoración, etc.).</p>
+
+                            <h5>Layer Configuration</h5>
+                            <ul>
+                                <li><code>Hexagon Grid Reference</code>: Referencia al HexagonGrid3D asociado</li>
+                                <li><code>Floor Cell</code>: Nivel base donde se colocan objetos por defecto (puede ser
+                                    negativo para capas subterráneas)</li>
+                            </ul>
+
+                            <h5>Gizmos Visualization</h5>
+                            <ul>
+                                <li><code>Base Gizmo Color</code>: Color del plano base hexagonal en los gizmos de Scene
+                                    View</li>
+                            </ul>
+
+                            <h5>Layer Statistics (Solo lectura)</h5>
+                            <ul>
+                                <li><code>Occupied Cells</code>: Número de celdas ocupadas en esta capa</li>
+                                <li><code>Total Objects</code>: Número total de objetos en esta capa</li>
+                            </ul>
+
+                            <h5>Métodos Públicos</h5>
+                            <ul>
+                                <li><code>IsCellOccupied(Vector3Int cellCoord)</code>: Verifica si una celda está ocupada</li>
+                                <li><code>GetCellOccupants(Vector3Int cellCoord)</code>: Obtiene todos los objetos en una celda específica</li>
+                                <li><code>GetStackingHeight(Vector3Int cellCoord)</code>: Calcula la altura para apilar el siguiente objeto</li>
+                                <li><code>GetAllOccupiedCells()</code>: Obtiene lista de todas las celdas ocupadas</li>
+                                <li><code>GetCellWorldPosition(Vector3Int cellCoord)</code>: Convierte coordenada de celda a posición del mundo</li>
+                                <li><code>RegisterCellOccupant(Vector3Int cellCoord, HexagonObject obj)</code>: Registra un objeto en una celda</li>
+                                <li><code>UnregisterCellOccupant(Vector3Int cellCoord, HexagonObject obj)</code>: Desregistra un objeto de una celda</li>
+                                <li><code>CleanupNullReferences()</code>: Limpia referencias nulas del registro</li>
+                                <li><code>RebuildFromHierarchy()</code>: Reconstruye el registro desde la jerarquía de objetos</li>
+                            </ul>
+
+                            <h5>Uso en Runtime</h5>
+                            <ul>
+                                <li>Usa <code>IsCellOccupied()</code> para verificar si puedes colocar algo en una celda</li>
+                                <li>Usa <code>GetCellOccupants()</code> para obtener todos los objetos en una posición (útil para interacciones)</li>
+                                <li>Usa <code>GetAllOccupiedCells()</code> para iterar sobre todos los objetos del mapa</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- FAQ Section -->
+            <section id="faq" class="section-card">
+                <h2 class="section-title">❓ Preguntas Frecuentes</h2>
+
+                <div class="accordion">
+                    <!-- CONFIGURACIÓN BÁSICA -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>¿Puedo usar objetos sin el componente HexagonObject?</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>No. El componente <code>HexagonObject</code> es <strong>obligatorio</strong> para que el sistema reconozca y gestione los objetos correctamente.</p>
+                            <p><strong>Razón:</strong> El componente define propiedades esenciales como Height Cells, Stack Priority, Requires Floor y si es Prop, que el sistema necesita para calcular colisiones, apilamientos y comportamientos de pintado.</p>
+                            <p><strong>Solución:</strong> Añade el componente a todos los prefabs antes de usarlos en paletas. Usa el botón "Calculate Properties" para configuración automática basada en la geometría del modelo.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>¿Cómo soluciono objetos que aparecen en posición incorrecta?</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Verifica que el <strong>punto de pivote</strong> del modelo esté en la base central del objeto, no en el centro geométrico.</p>
+                            
+                            <p><strong>Solución ideal:</strong> En tu software de modelado 3D (Blender, Maya, etc.), ajusta el pivot point antes de exportar. En Unity no se puede cambiar fácilmente el pivot de un modelo importado.</p>
+                            
+                            <p><strong>Solución en Unity - PivotOffset:</strong> El componente <code>HexagonObject</code> tiene un parámetro <code>PivotOffset</code> que permite compensar la posición sin modificar el modelo. Ajusta los valores X, Y, Z en el Inspector para corregir el offset.</p>
+                            
+                            <p><strong>Alternativa avanzada:</strong> Crea un GameObject vacío, coloca el modelo como hijo, y ajusta su Transform local para compensar el offset del pivot. Añade el componente HexagonObject al padre vacío.</p>
+                            
+                            <div class="quick-start-tips" style="margin-top: 1rem; background: rgba(255, 224, 130, 0.15); border-left-color: #ffe082;">
+                                <p><strong>⚠️ Rotación incorrecta:</strong> Para problemas de rotación, <code>PivotOffset</code> no ayuda. Debes corregir la orientación en tu software 3D o usar el truco del GameObject vacío con rotación local ajustada.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>¿Qué hago si el pincel detecta ocupación incorrecta (vacío detectado como ocupado o viceversa)?</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p><strong>Causas comunes y soluciones:</strong></p>
+                            <ol>
+                                <li><strong>Registro desincronizado:</strong> Haz clic en el botón <strong>"↻ Actualizar"</strong> al lado del dropdown de Layer selection. Esto reconstruye el registro de ocupación desde la jerarquía.</li>
+                                <li><strong>Objetos ocultos:</strong> Ve al <strong>Layer Tab → Object Catalog</strong> y verifica que ningún grupo esté oculto con el toggle de visibilidad. Los objetos invisibles siguen ocupando celdas.</li>
+                                <li><strong>HexagonObject invisible:</strong> Puede haber un GameObject con componente HexagonObject pero sin modelo 3D visible. Busca en el Hierarchy del layer objetos sospechosos.</li>
+                                <li><strong>Props y Stackables:</strong>
+                                    <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                        <li><code>IsHexagonProp = true</code>: El objeto bloquea la ocupación a objetos <strong>encima</strong> de él. Perfecto para elementos decorativos.</li>
+                                        <li><code>IsStackable = true</code>: Permite que múltiples objetos con esta propiedad activa puedan ocupar la misma celda simultáneamente. Útil para combinar elementos decorativos.</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- GRIDS Y DIMENSIONES -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>¿Puedo tener hexágonos de diferentes dimensiones en el mismo grid?</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p><strong>Alturas diferentes:</strong> Sí. Usa la propiedad <code>HeightCells</code> del componente HexagonObject para definir cuántas celdas verticales ocupa cada prefab sobre la geometría base del grid.</p>
+                            <p><strong>Dimensiones horizontales diferentes:</strong> No en el mismo grid. Cada HexagonGrid3D tiene geometría fija (Cell Radius, Cell Height) que define el tamaño base de todas las celdas hexagonales.</p>
+                            <p><strong>Solución para múltiples dimensiones:</strong> Crea múltiples HexagonGrid3D en la escena, cada uno con sus propias dimensiones. Cada grid puede tener sus propios layers independientes.</p>
+                        </div>
+                    </div>
+
+                    <!-- LAYERS Y COLISIONES -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>¿Cómo controlo qué layers pueden coexistir en las mismas celdas?</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Usa la <strong>Collision Matrix</strong> en el tab Grid para controlar las interacciones entre layers.</p>
+                            <p><strong>Funcionamiento:</strong></p>
+                            <ul>
+                                <li><strong>Marcado (✓):</strong> Los layers colisionan - NO pueden superponerse en la misma celda</li>
+                                <li><strong>Desmarcado ( ):</strong> Los layers NO colisionan - SÍ pueden compartir celdas</li>
+                            </ul>
+                            
+                            <p><strong>Pasos para configurar:</strong></p>
+                            <ol>
+                                <li>Ve a <strong>Grid Tab → Collision Matrix</strong></li>
+                                <li>Localiza la intersección entre los layers que quieres configurar</li>
+                                <li>Marca/desmarca según necesites</li>
+                            </ol>
+                            
+                            <div class="quick-start-tips" style="margin-top: 1rem; background: rgba(126, 207, 255, 0.1); border-left-color: #7ecfff;">
+                                <p><strong>💡 Ejemplo práctico - Layers estacionales:</strong></p>
+                                <ul style="margin-top: 0.5rem;">
+                                    <li><strong>Layer 1 "Terrain Base":</strong> Forma del terreno (montañas, valles)</li>
+                                    <li><strong>Layer 2 "Verano":</strong> 
+                                        <ul style="margin-left: 1.5rem;">
+                                            <li>Colisión activada con Layer 1 (pinta sobre el terreno)</li>
+                                            <li>Usa hexágonos de pasto verde y pradera colorida</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Layer 3 "Invierno":</strong>
+                                        <ul style="margin-left: 1.5rem;">
+                                            <li>Colisión desactivada con Layer 2 (ignora el verano)</li>
+                                            <li>Colisión activada con Layer 1 (trabaja sobre la misma forma de terreno)</li>
+                                            <li>Usa hexágonos de nieve y paisaje invernal</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <p style="margin-top: 0.8rem;"><strong>Resultado:</strong> Puedes activar/desactivar los layers estacionales en el Hierarchy para cambiar entre verano e invierno manteniendo la misma forma de terreno.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>¿Qué significa "RequiresFloor" en el HexagonObject?</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Define si el objeto necesita suelo debajo para ser colocado. Usado principalmente en modo <strong>Fill Volume</strong>.</p>
+                            <ul>
+                                <li><strong>RequiresFloor = true:</strong> Solo se coloca si hay otro objeto directamente debajo. Ideal para edificios, árboles, decoración.</li>
+                                <li><strong>RequiresFloor = false:</strong> Se puede colocar en el aire. Ideal para terreno base, plataformas flotantes, nubes.</li>
+                            </ul>
+                            <p><strong>Uso práctico:</strong> Al rellenar un volumen con Fill Volume, el sistema verifica automáticamente esta propiedad para evitar decoración flotante sin base.</p>
+                        </div>
+                    </div>
+
+                    <!-- RENDIMIENTO Y ESCALA -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>¿Puedo hacer escenarios enormes con miles de hexágonos?</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p><strong>Limitación:</strong> La herramienta instancia objetos reales en la escena. Miles de GameObjects pueden causar problemas de rendimiento en editor y runtime.</p>
+                            
+                            <p><strong>Estrategias recomendadas:</strong></p>
+                            <ul>
+                                <li><strong>Escenarios pequeños/modulares:</strong> Divide el mundo en secciones más pequeñas (chunks) y carga/descarga según la posición del jugador.</li>
+                                <li><strong>Técnicas de optimización:</strong>
+                                    <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                        <li>Static Batching para objetos inmóviles</li>
+                                        <li>GPU Instancing para objetos idénticos</li>
+                                        <li>LODs (Level of Detail) para reducir complejidad a distancia</li>
+                                        <li>Occlusion Culling para ocultar geometría no visible</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Sistema de streaming:</strong> Exporta layers a JSON (botón Exportar en Layer Tab) y crea un sistema custom que:
+                                    <ol style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                        <li>Carga datos de posiciones desde JSON</li>
+                                        <li>Usa Object Pooling para reutilizar instancias</li>
+                                        <li>Solo instancia hexágonos visibles por la cámara</li>
+                                        <li>Destruye/desactiva hexágonos fuera de rango</li>
+                                    </ol>
+                                </li>
+                            </ul>
+
+                            <div class="quick-start-tips" style="margin-top: 1rem; background: rgba(255, 224, 130, 0.15); border-left-color: #ffe082;">
+                                <p><strong>💡 Recomendación:</strong> Diseña primero el escenario completo en el editor para tener la visión general, luego implementa streaming/chunking para runtime si es necesario.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WORKFLOW Y DATOS -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>¿Cómo reutilizo un layer en otra escena o proyecto?</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Usa la función de <strong>Exportar/Importar</strong> en el Layer Tab:</p>
+                            
+                            <p><strong>Exportar:</strong></p>
+                            <ol>
+                                <li>Ve a <strong>Layer Tab → Data Management → Exportar Layer</strong></li>
+                                <li>Guarda el archivo JSON en una ubicación accesible</li>
+                                <li>El JSON contiene: posiciones, rotaciones, referencias a prefabs, configuración del layer y geometría del grid</li>
+                            </ol>
+
+                            <p><strong>Importar:</strong></p>
+                            <ol>
+                                <li>En la escena destino, crea un HexagonGrid3D con las mismas dimensiones</li>
+                                <li>Crea un Layer o selecciona uno existente</li>
+                                <li>Ve a <strong>Layer Tab → Data Management → Importar Layer</strong></li>
+                                <li>Selecciona el archivo JSON</li>
+                                <li>Revisa el <strong>Preview Obligatorio</strong> para reasignar prefabs faltantes</li>
+                                <li>Confirma la importación</li>
+                            </ol>
+
+                            <div class="quick-start-tips" style="margin-top: 1rem; background: rgba(255, 224, 130, 0.15); border-left-color: #ffe082;">
+                                <p><strong>⚠️ Importante:</strong> El import <strong>elimina</strong> todos los objetos existentes en el layer antes de cargar. Siempre solicita confirmación si hay datos.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>¿El editor funciona en Play Mode (tiempo de ejecución)?</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p><strong>No.</strong> Hexagon Map Tool V2 es una herramienta de <strong>editor solamente</strong> (Edit Mode).</p>
+                            <p><strong>Diseño:</strong> Está pensado para construir y diseñar mapas hexagonales durante el desarrollo, no para permitir edición dinámica durante el juego.</p>
+                            <p><strong>En Runtime:</strong> Los objetos creados son GameObjects normales que existen en la escena. Puedes acceder a ellos mediante código, pero no puedes usar las herramientas de pintado/edición.</p>
+                            <p><strong>Si necesitas edición en runtime:</strong> Los componentes (HexagonGrid3D, HexagonTileLayer, HexagonObject) tienen APIs públicas que puedes usar para crear tu propio sistema de edición en runtime.</p>
+                        </div>
+                    </div>
+
+                    <!-- TÉCNICAS AVANZADAS -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>¿Cómo creo variaciones naturales en el terreno?</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Usa un brush con <strong>múltiples variantes</strong> del mismo tipo de objeto.</p>
+                            
+                            <p><strong>Técnica:</strong></p>
+                            <ol>
+                                <li>Crea 3-5 variantes del mismo elemento (ej: césped con flores diferentes)</li>
+                                <li>Añádelas todas al mismo brush</li>
+                                <li>Selecciona el patrón <strong>Random</strong> en Patrón de Distribución</li>
+                                <li>Activa <strong>Rotación Aleatoria</strong> y permite varios ángulos</li>
+                            </ol>
+
+                            <p><strong>Resultado:</strong> El sistema distribuirá aleatoriamente las variantes con diferentes rotaciones, creando apariencia orgánica y natural.</p>
+
+                            <div class="quick-start-tips" style="margin-top: 1rem; background: rgba(126, 207, 255, 0.1); border-left-color: #7ecfff;">
+                                <p><strong>💡 Tip avanzado:</strong> Combina esto con el modo <strong>Over Level</strong> para que la decoración se adapte automáticamente a las irregularidades del terreno.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-icon">▶</span>
+                            <span>¿Qué son los patrones y cuántos prefabs necesito en cada brush?</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Los patrones definen cómo se distribuyen los prefabs del brush dentro del área de pintado.</p>
+                            
+                            <table style="width: 100%; border-collapse: collapse; line-height: 1.6; margin-top: 1rem;">
+                                <tr style="background: rgba(126, 207, 255, 0.05);">
+                                    <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); font-weight: 600; width: 35%;">Random</td>
+                                    <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">Cualquier cantidad. Selección aleatoria en cada celda.</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); font-weight: 600;">Sequential</td>
+                                    <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">Cualquier cantidad. Coloca en orden (0→1→2→0...).</td>
+                                </tr>
+                                <tr style="background: rgba(126, 207, 255, 0.05);">
+                                    <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); font-weight: 600;">Alternating Ring</td>
+                                    <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Exactamente 2 prefabs.</strong> Alterna por anillos concéntricos.</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); font-weight: 600;">Diagonal</td>
+                                    <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Exactamente 2 prefabs.</strong> Patrón diagonal según X+Z.</td>
+                                </tr>
+                                <tr style="background: rgba(126, 207, 255, 0.05);">
+                                    <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); font-weight: 600;">Stripe</td>
+                                    <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Mínimo 2 prefabs.</strong> Franjas horizontales paralelas.</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); font-weight: 600;">Border Only</td>
+                                    <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">Cualquier cantidad. Solo pinta el perímetro.</td>
+                                </tr>
+                            </table>
+
+                            <p style="margin-top: 1rem;"><strong>Validación:</strong> El sistema muestra warnings si no tienes suficientes prefabs para el patrón seleccionado.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
         </main>
     </div>
-    <footer
-        style="width: 100%; text-align: center; padding: 0; color: #b0b4b9; font-size: 1em; background: transparent; user-select: none; border: none;">
-        <div style="width:100vw; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; background:rgba(30,34,40,0.97); border-radius:0; box-shadow:0 2px 24px rgba(0,0,0,0.18); padding:2.2em 0 1.5em 0; border-top:1.5px solid #353a40; border-bottom:1.5px solid #353a40;">
-            <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start; gap:2.5em;">
-                <div style="flex:1 1 320px; min-width:260px; max-width:400px; text-align:left;">
-                    <div style="font-size:1.18em; margin-bottom:0.7em; color:#ffe082; font-weight:700;">¿Necesitas ayuda o quieres contactar?</div>
-                    <div style="margin-bottom:0.7em; color:#b0b4b9; font-size:1.04em;">Únete a nuestro <a href="https://discord.gg/5W29qkWFQK" target="_blank" rel="noopener" style="color:#7ed957; font-weight:600; text-decoration:underline;">Discord</a> para soporte, dudas o reportar problemas.<br>O escríbenos a: <a href="mailto:Project_D21@outlook.com" style="color:#b0b4b9; text-decoration:underline;">Project_D21@outlook.com</a></div>
-                </div>
-                <div style="flex:1 1 220px; min-width:180px; max-width:320px; text-align:center;">
-                    <div style="font-size:1.08em; color:#ffe082; font-weight:600; margin-bottom:0.7em;">Redes y comunidad</div>
-                    <div style="display: flex; gap: 1.2em; justify-content: center; align-items: center; margin: 0.8em 0 0.5em 0;">
-                        <a href="https://discord.gg/5W29qkWFQK" target="_blank" rel="noopener" style="display: flex; align-items: center; background: #5865F2; color: #fff; border-radius: 8px; padding: 0.5em 1.2em; text-decoration: none; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.10); transition: background 0.2s;">
-                            <img src="img/discord-icon.png" alt="Discord" style="width: 22px; height: 22px; margin-right: 0.6em;"> Discord
-                        </a>
-                        <a href="https://www.youtube.com/@ColdfireDvr" target="_blank" rel="noopener" style="display: flex; align-items: center; background: #FF0000; color: #fff; border-radius: 8px; padding: 0.5em 1.2em; text-decoration: none; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.10); transition: background 0.2s;">
-                            <img src="img/youtube-icon.png" alt="YouTube" style="width: 22px; height: 22px; margin-right: 0.6em;"> YouTube
-                        </a>
+
+    <!-- Footer -->
+    <footer style="width: 100%; text-align: center; padding: 0; margin-top: 4rem; color: #b0b4b9; font-size: 1em; background: transparent; user-select: none; border: none;">
+        <div style="width:100vw; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; background: linear-gradient(180deg, rgba(26,28,32,0.95) 0%, rgba(30,34,40,0.98) 100%); border-radius:0; box-shadow:0 -4px 32px rgba(0,0,0,0.3), 0 2px 24px rgba(0,0,0,0.18); padding:2.2em 0 1.5em 0; border-top:2px solid rgba(126, 207, 255, 0.15);">
+            <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start; gap:2.5em; padding: 0 2rem;">
+                
+                <!-- Columna 1: Acerca de -->
+                <div style="flex:1 1 280px; min-width:240px; max-width:380px; text-align:left;">
+                    <div style="font-size:1.18em; margin-bottom:0.7em; color:#ffe082; font-weight:700; text-shadow: 0 2px 8px rgba(255, 224, 130, 0.3);">🛠️ Hexagon Map Tool V2</div>
+                    <div style="margin-bottom:0.7em; color:#c5c9ce; font-size:1.02em; line-height:1.6;">Herramienta profesional para Unity que facilita la creación, edición y gestión de mapas hexagonales 3D. Diseñada para agilizar el proceso de diseño de niveles.</div>
+                    <div style="margin-top:1.2em; color:#b0b4b9; font-size:0.96em;">
+                        <strong style="color:#7ecfff; text-shadow: 0 1px 6px rgba(126, 207, 255, 0.4);">Version:</strong> 2.0.0<br>
+                        <strong style="color:#7ecfff; text-shadow: 0 1px 6px rgba(126, 207, 255, 0.4);">Release:</strong> 2026
                     </div>
                 </div>
-                <div style="flex:1 1 220px; min-width:180px; max-width:320px; text-align:right;">
-                    <div style="font-size:1.08em; color:#ffe082; font-weight:600; margin-bottom:0.7em;">Créditos</div>
-                    <div style="margin-bottom:0.7em; color:#b0b4b9; font-size:0.98em;">Desarrollador principal:<br><b>ColdfireDv</b></div>
-                    <div style="margin-bottom:0.7em; color:#b0b4b9; font-size:0.98em;">Estudio:<br><b>Project D21 Studio</b></div>
+
+                <!-- Columna 2: Comunidad y Soporte -->
+                <div style="flex:1 1 240px; min-width:200px; max-width:320px; text-align:center;">
+                    <div style="font-size:1.18em; color:#ffe082; font-weight:700; margin-bottom:0.8em; text-shadow: 0 2px 8px rgba(255, 224, 130, 0.3);">💬 Comunidad y Soporte</div>
+                    <div style="margin-bottom:1em; color:#c5c9ce; font-size:1.02em;">Únete a nuestra comunidad y obtén ayuda</div>
+                    <div style="display:flex; flex-direction:column; gap:0.7em; align-items:center;">
+                        <a href="https://discord.gg/5W29qkWFQK" target="_blank" style="color:#7ecfff; text-decoration:none; font-size:1.05em; font-weight:500; transition:all 0.3s ease; display:inline-flex; align-items:center; gap:0.5em; text-shadow: 0 1px 4px rgba(126, 207, 255, 0.3);" onmouseover="this.style.color='#a8e6ff'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='#7ecfff'; this.style.transform='translateX(0)';">
+                            <img src="img/discord.png" alt="Discord" style="width:20px; height:20px; filter:brightness(0) saturate(100%) invert(80%) sepia(15%) saturate(1000%) hue-rotate(170deg) brightness(100%) contrast(105%);">
+                            Discord
+                        </a>
+                        <a href="https://youtube.com/@ColdfireDv" target="_blank" style="color:#7ecfff; text-decoration:none; font-size:1.05em; font-weight:500; transition:all 0.3s ease; display:inline-flex; align-items:center; gap:0.5em; text-shadow: 0 1px 4px rgba(126, 207, 255, 0.3);" onmouseover="this.style.color='#a8e6ff'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='#7ecfff'; this.style.transform='translateX(0)';">
+                            <img src="img/youtube.png" alt="YouTube" style="width:20px; height:20px; filter:brightness(0) saturate(100%) invert(80%) sepia(15%) saturate(1000%) hue-rotate(170deg) brightness(100%) contrast(105%);">
+                            YouTube
+                        </a>
+                        <a href="https://forum.unity.com" target="_blank" style="color:#7ecfff; text-decoration:none; font-size:1.05em; font-weight:500; transition:all 0.3s ease; display:inline-flex; align-items:center; gap:0.5em; text-shadow: 0 1px 4px rgba(126, 207, 255, 0.3);" onmouseover="this.style.color='#a8e6ff'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='#7ecfff'; this.style.transform='translateX(0)';">
+                            <img src="img/unity.png" alt="Unity" style="width:20px; height:20px; filter:brightness(0) saturate(100%) invert(80%) sepia(15%) saturate(1000%) hue-rotate(170deg) brightness(100%) contrast(105%);">
+                            Unity Forum
+                        </a>
+                        <div style="margin-top:0.3em; color:#7ecfff; font-size:0.98em; font-weight:500; text-shadow: 0 1px 4px rgba(126, 207, 255, 0.3); display:inline-flex; align-items:center; gap:0.4em;">
+                            <img src="img/outlook.png" alt="Unity" style="width:20px; height:20px; filter:brightness(0) saturate(100%) invert(80%) sepia(15%) saturate(1000%) hue-rotate(170deg) brightness(100%) contrast(105%);">
+                            Project_D21@outlook.com
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 3: Créditos -->
+                <div style="flex:1 1 240px; min-width:200px; max-width:320px; text-align:right;">
+                    <div style="font-size:1.18em; color:#ffe082; font-weight:700; margin-bottom:0.8em; text-shadow: 0 2px 8px rgba(255, 224, 130, 0.3);">✨ Créditos</div>
+                    <div style="margin-bottom:0.9em; color:#c5c9ce; font-size:1.02em;">
+                        <strong style="color:#7ecfff; text-shadow: 0 1px 6px rgba(126, 207, 255, 0.4);">Desarrollador principal:</strong><br>
+                        <span style="font-weight:600; color:#e8ebed;">ColdfireDv</span>
+                    </div>
+                    <div style="margin-bottom:0.9em; color:#c5c9ce; font-size:1.02em;">
+                        <strong style="color:#7ecfff; text-shadow: 0 1px 6px rgba(126, 207, 255, 0.4);">Estudio:</strong><br>
+                        <span style="font-weight:600; color:#e8ebed;">Project D21 Studios</span>
+                    </div>
+                    <div style="margin-top:1.2em; color:#b0b4b9; font-size:0.94em; font-style:italic;">
+                        Desarrollado con ❤️ para la comunidad de Unity
+                    </div>
                 </div>
             </div>
-            <hr style="margin:2em auto 1em auto; border:0; border-top:1.5px solid #353a40; width:80%;">
-            <div style="margin-top:0.7em; color:#b0b4b9; font-size:0.98em; text-align:center;">¿Dudas o sugerencias? ¡Contáctanos por Discord o YouTube!</div>
-            <div style="margin-top:1.2em; color:#b0b4b9; font-size:1em; text-align:center;">Hexagon Map Tool V2 &copy; 2026 | Documentación y recursos por ColdfireDv. Todos los derechos reservados.</div>
+            
+            <!-- Separador y texto final -->
+            <hr style="margin:2em auto 1em auto; border:0; border-top:1.5px solid rgba(126, 207, 255, 0.12); width:80%; opacity: 0.6;">
+            <div style="margin-top:1.2em; color:#9ea3a8; font-size:1em; text-align:center;">
+                Hexagon Map Tool V2 &copy; 2026 | Documentación y recursos por ColdfireDv. Todos los derechos reservados.
+            </div>
         </div>
     </footer>
-    </div>
+
     <script src="js/app.js"></script>
-    <style>
-        /* Subítems de componentes en la barra lateral */
-        .sidebar ul ul {
-            margin-left: 1.2em;
-            font-size: 0.91em !important;
-            margin-top: 0.2em;
-        }
-
-        .sidebar ul ul li a {
-            color: #a3a6ad !important;
-            font-weight: 400 !important;
-            font-size: 0.97em !important;
-            letter-spacing: 0.01em;
-        }
-
-        .sidebar ul ul li a:hover {
-            color: #ffe082 !important;
-        }
-
-        .troubleshoot-accordion {
-            max-width: 700px;
-            margin: 0 auto 1.5em auto;
-            border-radius: 14px;
-            background: rgba(30, 34, 40, 0.92);
-            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.13);
-            padding: 1.2em 1.5em;
-        }
-
-        .trouble-item+.trouble-item {
-            margin-top: 1.2em;
-        }
-
-        .trouble-question {
-            width: 100%;
-            text-align: left;
-            background: linear-gradient(90deg, #23272b 60%, #2d3137 100%);
-            color: #f3f3f3;
-            border: none;
-            outline: none;
-            font-size: 1.08em;
-            font-weight: 500;
-            padding: 1em 1.2em;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s;
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.10);
-            position: relative;
-        }
-
-        .trouble-question.active,
-        .trouble-question:hover {
-            background: linear-gradient(90deg, #2d3137 60%, #23272b 100%);
-            color: #ffe082;
-        }
-
-        .trouble-answer {
-            display: none;
-            background: #23272b;
-            color: #e0e0e0;
-            border-radius: 0 0 8px 8px;
-            margin-top: 0.2em;
-            padding: 1em 1.2em;
-            font-size: 1em;
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
-            border-top: 1px solid #353a40;
-            animation: fadeIn 0.3s;
-        }
-
-        .trouble-answer.show {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
-    <script>
-        const toggleBtn = document.getElementById('toggleSidebar');
-        const sidebar = document.getElementById('sidebar');
-        const header = document.querySelector('header');
-        const h1 = header.querySelector('h1');
-        const h2 = header.querySelector('h2');
-        const maxScroll = 150; // Ajusta este valor según el tamaño del header grande
-        const minFontH1 = 2.5; // rem
-        const maxFontH1 = 4; // rem
-        const minFontH2 = 1.1; // rem
-        const maxFontH2 = 2; // rem
-        const minPadding = 0.7; // rem
-        const maxPadding = 3.5; // rem
-        window.addEventListener('scroll', () => {
-            const scroll = Math.min(window.scrollY, maxScroll);
-            const percent = scroll / maxScroll;
-            // Interpolación lineal para tamaño y padding
-            h1.style.fontSize = `${maxFontH1 - (maxFontH1 - minFontH1) * percent}rem`;
-            h2.style.fontSize = `${maxFontH2 - (maxFontH2 - minFontH2) * percent}rem`;
-            header.style.paddingTop = `${6 - (6 - 1.2) * percent}rem`;
-            header.style.paddingBottom = `${maxPadding - (maxPadding - minPadding) * percent}rem`;
-        });
-        toggleBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('hidden');
-        });
-    </script>
 </body>
 
 </html>
