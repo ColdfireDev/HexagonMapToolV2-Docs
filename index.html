@@ -1583,6 +1583,8 @@
                                 <li><code>Cell Coordinate</code>: <span
                                         data-i18n="components_hexobj_grid_cell">Coordenada de la celda hexagonal que
                                         ocupa</span></li>
+                                <li><code>ParentGrid</code>: <span
+                                        data-i18n="components_hexobj_grid_parentgrid">Referencia de solo lectura al HexagonGrid3D padre (accesible vía el TileLayer)</span></li>
                             </ul>
 
                             <h5 data-i18n="components_hexobj_props_title">Cell Properties</h5>
@@ -1598,6 +1600,8 @@
                                 <li><code>Requires Floor</code>: <span
                                         data-i18n="components_hexobj_props_floor">Requiere objeto sólido debajo para ser
                                         colocado</span></li>
+                                <li><code>Rotation Index</code>: <span
+                                        data-i18n="components_hexobj_props_rotation">Índice de rotación (0–5) en incrementos de 60°. 0=0°, 1=60°, 2=120°, 3=180°, 4=240°, 5=300°</span></li>
                             </ul>
 
                             <h5 data-i18n="components_hexobj_methods_title">Métodos Públicos</h5>
@@ -1607,6 +1611,10 @@
                                         y Height Cells basándose en el modelo 3D</span></li>
                                 <li><code>DoSnapToGrid()</code>: <span data-i18n="components_hexobj_methods_snap">Alinea
                                         el objeto a la celda hexagonal más cercana del grid</span></li>
+                                <li><code>SnapRotation()</code>: <span
+                                        data-i18n="components_hexobj_methods_snaprot">Redondea la rotación Y al múltiplo de 60° más cercano y actualiza <code>RotationIndex</code></span></li>
+                                <li><code>ApplyRotationFromIndex()</code>: <span
+                                        data-i18n="components_hexobj_methods_applyrot">Aplica la rotación en el Transform para que coincida con el valor actual de <code>RotationIndex</code></span></li>
                                 <li><code>MoveTo(Vector3Int cellCoord)</code>: <span
                                         data-i18n="components_hexobj_methods_move">Mueve el objeto a una coordenada de
                                         celda específica</span></li>
@@ -1629,6 +1637,7 @@
                                     objetos entre celdas durante el juego</li>
                                 <li data-i18n="components_hexobj_runtime_cell">Accede a <code>CellCoordinate</code> para
                                     saber en qué celda está el objeto</li>
+                                <li data-i18n="components_hexobj_runtime_rotation">Usa <code>SnapRotation()</code> tras rotar un objeto en runtime para mantener el índice sincronizado</li>
                             </ul>
                         </div>
                     </div>
@@ -2227,7 +2236,7 @@
                         niveles.</div>
                     <div style="margin-top:1.2em; color:#b0b4b9; font-size:0.96em;">
                         <strong style="color:#7ecfff; text-shadow: 0 1px 6px rgba(126, 207, 255, 0.4);"
-                            data-i18n="footer_version">Version:</strong> 1.0.0<br>
+                            data-i18n="footer_version">Version:</strong> 1.0.1<br>
                         <strong style="color:#7ecfff; text-shadow: 0 1px 6px rgba(126, 207, 255, 0.4);"
                             data-i18n="footer_release">Release:</strong> 2026
                     </div>
